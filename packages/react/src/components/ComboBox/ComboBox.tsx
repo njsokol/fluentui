@@ -26,6 +26,7 @@ import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox
 import { getClassNames, getComboBoxOptionClassNames } from './ComboBox.classNames';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 import { BaseButton, Button, CommandButton, IconButton } from '../../Button';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import type { IAutofill } from '../../Autofill';
@@ -132,6 +133,7 @@ const COMPONENT_NAME = 'ComboBox';
 const DEFAULT_PROPS: Partial<IComboBoxProps> = {
   options: [],
   allowFreeform: false,
+  allowParentArrowNavigation: false,
   autoComplete: 'on',
   buttonIconProps: { iconName: 'ChevronDown' },
 };
@@ -645,6 +647,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       'aria-label': ariaLabel && !label ? ariaLabel : undefined,
     };
 
+    const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
+
     return (
       <div
         data-ktp-target={true}
@@ -678,10 +682,12 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           aria-activedescendant={ariaActiveDescendantValue}
           aria-required={required}
           aria-disabled={disabled}
+          aria-invalid={hasErrorMessage}
           aria-controls={isOpen ? this._id + '-list' : undefined}
           spellCheck={false}
           defaultVisibleValue={this._currentVisibleValue}
           suggestedDisplayValue={suggestedDisplayValue}
+          // eslint-disable-next-line @typescript-eslint/no-deprecated
           updateValueInWillReceiveProps={this._onUpdateValueInAutofillWillReceiveProps}
           shouldSelectFullInputValueInComponentDidUpdate={
             this._onShouldSelectFullInputValueInAutofillComponentDidUpdate
@@ -897,7 +903,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     // Remember the original value and then make the value lowercase for comparison
     const originalUpdatedValue: string = updatedValue;
-    updatedValue = updatedValue.toLocaleLowerCase();
+    // Make the value lowercase for comparison if caseSensitive is false
+    updatedValue = this._adjustForCaseSensitivity(updatedValue);
 
     let newSuggestedDisplayValue = '';
 
@@ -910,14 +917,14 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           option =>
             isNormalOption(option) &&
             !option.disabled &&
-            getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
+            this._adjustForCaseSensitivity(getPreviewText(option)).indexOf(updatedValue) === 0,
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
         const text: string = getPreviewText(items[0]);
 
         // If the user typed out the complete option text, we don't need any suggested display text anymore
-        newSuggestedDisplayValue = text.toLocaleLowerCase() !== updatedValue ? text : '';
+        newSuggestedDisplayValue = this._adjustForCaseSensitivity(text) !== updatedValue ? text : '';
 
         // remember the index of the match we found
         newCurrentPendingValueValidIndex = items[0].index;
@@ -928,7 +935,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         .map((item, index) => ({ ...item, index }))
         .filter(
           option =>
-            isNormalOption(option) && !option.disabled && getPreviewText(option).toLocaleLowerCase() === updatedValue,
+            isNormalOption(option) &&
+            !option.disabled &&
+            this._adjustForCaseSensitivity(getPreviewText(option)) === updatedValue,
         );
 
       // if we found a match remember the index
@@ -994,7 +1003,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _updateAutocompleteIndexWithoutFreeform(updatedValue: string): number {
     const { currentOptions } = this.props.hoisted;
     const originalUpdatedValue: string = updatedValue;
-    updatedValue = updatedValue.toLocaleLowerCase();
+    updatedValue = this._adjustForCaseSensitivity(updatedValue);
 
     // If autoComplete is on, attempt to find a match where the text of an option starts with the updated value
     const items = currentOptions
@@ -1002,7 +1011,9 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       .filter(
         option =>
-          isNormalOption(option) && !option.disabled && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0,
+          isNormalOption(option) &&
+          !option.disabled &&
+          this._adjustForCaseSensitivity(option.text).indexOf(updatedValue) === 0,
       );
 
     // If we found a match, update the state
@@ -1224,7 +1235,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * OnBlur handler. Set the focused state to false
    * and submit any pending value
    */
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   private _onBlur = (event: React.FocusEvent<HTMLElement | Autofill | BaseButton | Button>): void => {
     const doc = getDocumentEx(this.context);
     // Do nothing if the blur is coming from something
@@ -1300,21 +1311,26 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
       // Check to see if the user typed an exact match
       if (indexWithinBounds(currentOptions, currentPendingValueValidIndex)) {
-        const pendingOptionText = getPreviewText(currentOptions[currentPendingValueValidIndex]).toLocaleLowerCase();
+        const pendingOptionText = this._adjustForCaseSensitivity(
+          getPreviewText(currentOptions[currentPendingValueValidIndex]),
+        );
+
         const autofill = this._autofill.current;
 
         // By exact match, that means: our pending value is the same as the pending option text OR
         // the pending option starts with the pending value and we have an "autoComplete" selection
         // where the total length is equal to pending option length OR
         // the live value in the underlying input matches the pending option; update the state
+        const adjustedCurrentPendingValue = this._adjustForCaseSensitivity(currentPendingValue);
         if (
-          currentPendingValue.toLocaleLowerCase() === pendingOptionText ||
+          adjustedCurrentPendingValue === pendingOptionText ||
           (autoComplete &&
-            pendingOptionText.indexOf(currentPendingValue.toLocaleLowerCase()) === 0 &&
+            pendingOptionText.indexOf(adjustedCurrentPendingValue) === 0 &&
             autofill?.isValueSelected &&
             currentPendingValue.length + (autofill.selectionEnd! - autofill.selectionStart!) ===
               pendingOptionText.length) ||
-          autofill?.inputElement?.value.toLocaleLowerCase() === pendingOptionText
+          (autofill?.inputElement?.value !== undefined &&
+            this._adjustForCaseSensitivity(autofill.inputElement.value) === pendingOptionText)
         ) {
           this._setSelectedIndex(currentPendingValueValidIndex, submitPendingValueEvent);
           if (multiSelect && this.state.isOpen) {
@@ -1407,6 +1423,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         }
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
         hidden={persistMenu ? !isOpen : undefined}
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         shouldRestoreFocus={shouldRestoreFocus}
         // eslint-disable-next-line react/jsx-no-bind
         preventDismissOnEvent={(ev: Event) => this._preventDismissOnScrollOrResize(ev)}
@@ -1587,7 +1604,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const isChecked: boolean = this._isOptionChecked(item.index);
     const isIndeterminate: boolean = this._isOptionIndeterminate(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
-    const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
+    const optionClassNames = getComboBoxOptionClassNames(optionStyles);
     const title = item.title;
 
     const getOptionComponent = () => {
@@ -2077,6 +2094,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       disabled,
       allowFreeform,
       allowFreeInput,
+      allowParentArrowNavigation,
       autoComplete,
       hoisted: { currentOptions },
     } = this.props;
@@ -2093,7 +2111,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     let index = this._getPendingSelectedIndex(false /* includeCurrentPendingValue */);
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.enter:
         if (this._autofill.current && this._autofill.current.inputElement) {
@@ -2216,7 +2234,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
         // If end, update the values to respond to END
         // which goes to the last selectable option
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (ev.which === KeyCodes.end) {
           index = currentOptions.length;
           directionToSearch = SearchDirection.backward;
@@ -2235,15 +2253,20 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       default:
         /* eslint-enable no-fallthrough */
         // are we processing a function key? if so bail out
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (ev.which >= 112 /* F1 */ && ev.which <= 123 /* F12 */) {
           return;
         }
 
         // If we get here and we got either and ALT key
         // or meta key, let the event propagate
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         if (ev.keyCode === KeyCodes.alt || ev.key === 'Meta' /* && isOpen */) {
+          return;
+        }
+
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        if (allowParentArrowNavigation && (ev.keyCode === KeyCodes.left || ev.keyCode === KeyCodes.right)) {
           return;
         }
 
@@ -2286,7 +2309,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       return;
     }
 
-    // eslint-disable-next-line deprecation/deprecation
+    // eslint-disable-next-line @typescript-eslint/no-deprecated
     switch (ev.which) {
       case KeyCodes.space:
         // If we are not allowing freeform or free input, and autoComplete is off
@@ -2369,11 +2392,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // of the event unless we have a tab, escape, or function key
       if (
         ev !== null &&
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         ev.which !== KeyCodes.tab &&
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         ev.which !== KeyCodes.escape &&
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         (ev.which < 112 /* F1 */ || ev.which > 123) /* F12 */
       ) {
         ev.stopPropagation();
@@ -2455,7 +2478,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 
-    return getOptionStyles(
+    const optionStyles = getOptionStyles(
       this.props.theme!,
       customStylesForAllOptions,
       customStylesForCurrentOption,
@@ -2463,6 +2486,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       item.hidden,
       this._isOptionHighlighted(item.index),
     );
+
+    // TODO: fix this for multi-window scenarios
+    optionStyles.__shadowConfig__ = this.props.styles?.__shadowConfig__;
+    return optionStyles;
   }
 
   /**
@@ -2486,6 +2513,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   private _hasFocus() {
     return this.state.focusState !== 'none';
+  }
+
+  private _adjustForCaseSensitivity(text: string): string {
+    return this.props.caseSensitive ? text : text.toLowerCase();
   }
 }
 
@@ -2590,6 +2621,6 @@ function getPreviewText(item: IComboBoxOption): string {
  * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
  */
 function isAltOrMeta(ev: React.KeyboardEvent<HTMLElement | Autofill>): boolean {
-  // eslint-disable-next-line deprecation/deprecation
+  // eslint-disable-next-line @typescript-eslint/no-deprecated
   return ev.which === KeyCodes.alt || ev.key === 'Meta';
 }

@@ -286,6 +286,8 @@ import { mergeScopedSettings } from '@fluentui/utilities';
 import { mergeSettings } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/style-utilities';
 import { mergeStyleSets } from '@fluentui/style-utilities';
+import { MergeStylesRootProvider } from '@fluentui/utilities';
+import { MergeStylesShadowRootProvider } from '@fluentui/utilities';
 import { mergeThemes } from '@fluentui/theme';
 import { modalize } from '@fluentui/utilities';
 import { MonthOfYear } from '@fluentui/date-time-utilities';
@@ -308,7 +310,6 @@ import { precisionRound } from '@fluentui/utilities';
 import { PulsingBeaconAnimationStyles } from '@fluentui/style-utilities';
 import { raiseClick } from '@fluentui/utilities';
 import * as React_2 from 'react';
-import type { ReactNode } from 'react';
 import { Rectangle } from '@fluentui/utilities';
 import { RefObject } from '@fluentui/utilities';
 import { registerDefaultFontFaces } from '@fluentui/theme';
@@ -354,6 +355,7 @@ import { Settings } from '@fluentui/utilities';
 import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
 import { setWarningCallback } from '@fluentui/utilities';
+import type { ShadowConfig } from '@fluentui/style-utilities';
 import { shallowCompare } from '@fluentui/utilities';
 import { SharedColors } from '@fluentui/theme';
 import { shouldWrapFocus } from '@fluentui/utilities';
@@ -372,9 +374,17 @@ import { toMatrix } from '@fluentui/utilities';
 import { trProperties } from '@fluentui/utilities';
 import { unhoistMethods } from '@fluentui/utilities';
 import { unregisterIcons } from '@fluentui/style-utilities';
+import { useAdoptedStylesheet } from '@fluentui/utilities';
+import { useAdoptedStylesheetEx } from '@fluentui/utilities';
 import { useCustomizationSettings } from '@fluentui/utilities';
 import { useDocument } from '@fluentui/react-window-provider';
 import { useFocusRects } from '@fluentui/utilities';
+import { useHasMergeStylesShadowRootContext } from '@fluentui/utilities';
+import { useMergeStylesHooks } from '@fluentui/utilities';
+import { useMergeStylesRootStylesheets } from '@fluentui/utilities';
+import { useMergeStylesShadowRootContext } from '@fluentui/utilities';
+import { useShadowConfig } from '@fluentui/utilities';
+import { useStyled } from '@fluentui/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
 import { values } from '@fluentui/utilities';
 import { videoProperties } from '@fluentui/utilities';
@@ -706,6 +716,8 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     static getDerivedStateFromProps(newProps: IBasePickerProps<any>): {
         items: any[];
     } | null;
+    // (undocumented)
+    protected _getDescribedBy: (items: T[], hasError: boolean) => string;
     // @deprecated (undocumented)
     protected getSuggestionsAlert(suggestionAlertClassName?: string): JSX.Element | undefined;
     // (undocumented)
@@ -754,9 +766,13 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>> extends Rea
     // (undocumented)
     protected renderCustomAlert(alertClassName?: string): JSX.Element;
     // (undocumented)
+    protected renderError(className?: string): JSX.Element | null;
+    // (undocumented)
     protected renderItems(): JSX.Element[];
     // (undocumented)
-    protected renderSuggestions(): JSX.Element | null;
+    protected renderLabel(inputId: string, styles: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> | undefined): JSX.Element | null;
+    // (undocumented)
+    protected renderSuggestions(styles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles> | undefined): JSX.Element | null;
     // (undocumented)
     protected resetFocus(index?: number): void;
     // (undocumented)
@@ -976,7 +992,7 @@ export function clamp(value: number, max: number, min?: number): number;
 export { classNamesFunction }
 
 // @public
-export function cleanupDefaultLayerHost(doc: Document): void;
+export function cleanupDefaultLayerHost(doc: Document, shadowRoot?: ShadowRoot | null): void;
 
 // @public (undocumented)
 export const Coachmark: React_2.FunctionComponent<ICoachmarkProps>;
@@ -1156,7 +1172,7 @@ export function correctRGB(color: IRGB): IRGB;
 export { createArray }
 
 // @public
-export function createDefaultLayerHost(doc: Document): Node | null;
+export function createDefaultLayerHost(doc: Document, shadowRoot?: ShadowRoot | null): Node | null;
 
 export { createFontStyles }
 
@@ -1588,49 +1604,49 @@ export { FabricPerformance }
 // @public (undocumented)
 export enum FabricSlots {
     // (undocumented)
-    black = 21,
+    black = 21,// BaseSlots.primaryColor, Shade[Shade.Unshaded]);
     // (undocumented)
-    neutralDark = 20,
+    neutralDark = 20,// BaseSlots.primaryColor, Shade[Shade.Shade1]);
     // (undocumented)
-    neutralLight = 11,
+    neutralLight = 11,// BaseSlots.primaryColor, Shade[Shade.Shade2]);
     // (undocumented)
-    neutralLighter = 10,
+    neutralLighter = 10,// BaseSlots.primaryColor, Shade[Shade.Shade3]);
     // (undocumented)
-    neutralLighterAlt = 9,
+    neutralLighterAlt = 9,// BaseSlots.primaryColor, Shade[Shade.Shade4]);
     // (undocumented)
-    neutralPrimary = 19,
+    neutralPrimary = 19,// BaseSlots.primaryColor, Shade[Shade.Shade5]);
     // (undocumented)
-    neutralPrimaryAlt = 18,
+    neutralPrimaryAlt = 18,// BaseSlots.primaryColor, Shade[Shade.Shade6]);
     // (undocumented)
-    neutralQuaternary = 13,
+    neutralQuaternary = 13,// BaseSlots.primaryColor, Shade[Shade.Shade7]);
     // (undocumented)
-    neutralQuaternaryAlt = 12,
+    neutralQuaternaryAlt = 12,// BaseSlots.primaryColor, Shade[Shade.Shade8]);
     // (undocumented)
-    neutralSecondary = 17,
+    neutralSecondary = 17,// BaseSlots.backgroundColor, Shade[Shade.Shade1]);
     // (undocumented)
-    neutralSecondaryAlt = 16,
+    neutralSecondaryAlt = 16,// BaseSlots.backgroundColor, Shade[Shade.Shade2]);
     // (undocumented)
-    neutralTertiary = 15,
+    neutralTertiary = 15,// BaseSlots.backgroundColor, Shade[Shade.Shade3]);
     // (undocumented)
-    neutralTertiaryAlt = 14,
+    neutralTertiaryAlt = 14,// BaseSlots.backgroundColor, Shade[Shade.Shade4]);
     // (undocumented)
-    themeDark = 7,
+    themeDark = 7,// BaseSlots.backgroundColor, Shade[Shade.Shade5]);
     // (undocumented)
-    themeDarkAlt = 6,
+    themeDarkAlt = 6,// BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
     // (undocumented)
-    themeDarker = 8,
+    themeDarker = 8,// BaseSlots.foregroundColor, Shade[Shade.Shade3]);
     // (undocumented)
-    themeLight = 3,
+    themeLight = 3,// BaseSlots.foregroundColor, Shade[Shade.Shade4]);
     // (undocumented)
-    themeLighter = 2,
+    themeLighter = 2,// BaseSlots.foregroundColor, Shade[Shade.Shade5]);
     // (undocumented)
-    themeLighterAlt = 1,
+    themeLighterAlt = 1,// BaseSlots.foregroundColor, Shade[Shade.Shade6]);
     // (undocumented)
-    themePrimary = 0,
+    themePrimary = 0,// BaseSlots.foregroundColor, Shade[Shade.Unshaded]);
     // (undocumented)
-    themeSecondary = 5,
+    themeSecondary = 5,// BaseSlots.foregroundColor, Shade[Shade.Shade7]);
     // (undocumented)
-    themeTertiary = 4,
+    themeTertiary = 4,// BaseSlots.foregroundColor, Shade[Shade.Shade8]);
     // (undocumented)
     white = 22
 }
@@ -2172,7 +2188,7 @@ export interface IActivityItemProps extends React_2.AllHTMLAttributes<HTMLElemen
 }
 
 // @public (undocumented)
-export interface IActivityItemStyles {
+export interface IActivityItemStyles extends IShadowDomStyle {
     activityContent?: IStyle;
     activityPersona?: IStyle;
     activityText?: IStyle;
@@ -2372,9 +2388,11 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     defaultSelectedItems?: T[];
     disabled?: boolean;
     enableSelectedSuggestionAlert?: boolean;
+    errorMessage?: string | JSX.Element;
     getTextFromItem?: (item: T, currentValue?: string) => string;
     inputProps?: IInputProps;
     itemLimit?: number;
+    label?: string;
     onBlur?: React_2.FocusEventHandler<HTMLInputElement | Autofill>;
     onChange?: (items?: T[]) => void;
     onDismiss?: (ev?: any, selectedItem?: T) => boolean | void;
@@ -2383,6 +2401,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     // @deprecated
     onFocus?: React_2.FocusEventHandler<HTMLInputElement | Autofill>;
+    onGetErrorMessage?: (items: T[]) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
     onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
@@ -2395,6 +2414,7 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
     pickerSuggestionsProps?: IBasePickerSuggestionsProps;
     removeButtonAriaLabel?: string;
     removeButtonIconProps?: IIconProps;
+    required?: boolean;
     resolveDelay?: number;
     searchingText?: ((props: {
         input: string;
@@ -2409,6 +2429,8 @@ export interface IBasePickerProps<T> extends IReactProps<any> {
 
 // @public (undocumented)
 export interface IBasePickerState<T> {
+    // (undocumented)
+    errorMessage?: string | JSX.Element;
     // (undocumented)
     isFocused?: boolean;
     // (undocumented)
@@ -2437,16 +2459,20 @@ export interface IBasePickerState<T> {
 
 // @public
 export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className' | 'disabled'> & {
+    hasErrorMessage: boolean;
     isFocused?: boolean;
     inputClassName?: string;
 };
 
 // @public
 export interface IBasePickerStyles {
+    error: IStyle;
     input: IStyle;
     itemsWrapper: IStyle;
     root: IStyle;
     screenReaderText: IStyle;
+    // Warning: (ae-forgotten-export) The symbol "IBasePickerSubComponentStyles" needs to be exported by the entry point index.d.ts
+    subComponentStyles: IBasePickerSubComponentStyles;
     text: IStyle;
 }
 
@@ -2727,7 +2753,7 @@ export interface IButtonProps extends React_2.AllHTMLAttributes<HTMLAnchorElemen
 }
 
 // @public (undocumented)
-export interface IButtonStyles {
+export interface IButtonStyles extends IShadowDomStyle {
     description?: IStyle;
     descriptionChecked?: IStyle;
     descriptionDisabled?: IStyle;
@@ -3217,11 +3243,8 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     popupProps?: IPopupProps;
     preferScrollResizePositioning?: boolean;
     preventDismissOnEvent?: (ev: Event | React_2.FocusEvent | React_2.KeyboardEvent | React_2.MouseEvent) => boolean;
-    // @deprecated
     preventDismissOnLostFocus?: boolean;
-    // @deprecated
     preventDismissOnResize?: boolean;
-    // @deprecated
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
@@ -3809,6 +3832,7 @@ export interface IColumn {
     name: string;
     onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void;
     onColumnContextMenu?: (column?: IColumn, ev?: React_2.MouseEvent<HTMLElement>) => void;
+    onColumnKeyDown?: (ev: React_2.KeyboardEvent, column: IColumn) => void;
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
@@ -3917,11 +3941,13 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox>, React_2.RefAttributes<HTMLDivElement> {
     allowFreeform?: boolean;
     allowFreeInput?: boolean;
+    allowParentArrowNavigation?: boolean;
     ariaDescribedBy?: string;
     autoComplete?: 'on' | 'off';
     autofill?: IAutofillProps;
     buttonIconProps?: IIconProps;
     caretDownButtonStyles?: Partial<IButtonStyles>;
+    caseSensitive?: boolean;
     comboBoxOptionStyles?: Partial<IComboBoxOptionStyles>;
     componentRef?: IRefObject<IComboBox>;
     dropdownMaxWidth?: number;
@@ -3963,7 +3989,7 @@ export interface IComboBoxState {
 }
 
 // @public (undocumented)
-export interface IComboBoxStyles {
+export interface IComboBoxStyles extends IShadowDomStyle {
     callout: IStyle;
     container: IStyle;
     divider: IStyle;
@@ -4495,6 +4521,7 @@ export interface IDetailsColumnProps extends React_2.ClassAttributes<DetailsColu
     isDropped?: boolean;
     onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void;
     onColumnContextMenu?: (column: IColumn, ev: React_2.MouseEvent<HTMLElement>) => void;
+    onColumnKeyDown?: (ev: React_2.KeyboardEvent, column: IColumn) => void;
     onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
     parentId?: string;
     // @deprecated (undocumented)
@@ -7011,6 +7038,7 @@ export interface IMessageBarProps extends React_2.HTMLAttributes<HTMLElement>, R
     // @deprecated
     overflowButtonAriaLabel?: string;
     role?: 'alert' | 'status' | 'none';
+    showExpandButton?: boolean;
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
     truncated?: boolean;
@@ -7685,6 +7713,7 @@ export type IPickerAriaIds = {
     selectedItems: string;
     suggestionList: string;
     combobox: string;
+    error: string;
 };
 
 // @public
@@ -7739,7 +7768,7 @@ export interface IPivotProps extends React_2.HTMLAttributes<HTMLDivElement>, Rea
     headersOnly?: boolean;
     linkFormat?: PivotLinkFormatType;
     linkSize?: PivotLinkSizeType;
-    onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement>) => void;
+    onLinkClick?: (item?: PivotItem, ev?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
     overflowAriaLabel?: string;
     overflowBehavior?: 'none' | 'menu';
     overflowButtonAs?: IComponentAs<IButtonProps>;
@@ -7862,7 +7891,7 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
     ariaLabelledBy?: string;
     backgroundColor?: string;
     bounds?: IRectangle;
-    children?: ReactNode;
+    children?: React_2.ReactNode;
     className?: string;
     componentRef?: IRefObject<IPositioningContainer>;
     coverTarget?: boolean;
@@ -8410,6 +8439,11 @@ export { ISettingsMap }
 export { IsFocusVisibleClassName }
 
 // @public (undocumented)
+export interface IShadowDomStyle {
+    __shadowConfig__?: ShadowConfig;
+}
+
+// @public (undocumented)
 export interface IShimmerCircle {
 }
 
@@ -8733,7 +8767,7 @@ export interface ISpinButtonStyleProps {
 }
 
 // @public (undocumented)
-export interface ISpinButtonStyles {
+export interface ISpinButtonStyles extends IShadowDomStyle {
     arrowButtonsContainer: IStyle;
     icon: IStyle;
     input: IStyle;
@@ -9171,9 +9205,15 @@ export interface ITag {
 export interface ITagItemProps extends IPickerItemProps<ITag> {
     className?: string;
     enableTagFocusInDisabledPicker?: boolean;
+    removeButtonProps?: ITagItemRemoveButtonProps;
     styles?: IStyleFunctionOrObject<ITagItemStyleProps, ITagItemStyles>;
     theme?: ITheme;
     title?: string;
+}
+
+// @public
+export interface ITagItemRemoveButtonProps extends IButtonProps {
+    'data-id'?: string;
 }
 
 // @public
@@ -9369,7 +9409,7 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pi
 };
 
 // @public (undocumented)
-export interface ITextFieldStyles {
+export interface ITextFieldStyles extends IShadowDomStyle {
     description: IStyle;
     errorMessage: IStyle;
     field: IStyle;
@@ -10002,6 +10042,10 @@ export { mergeSettings }
 export { mergeStyles }
 
 export { mergeStyleSets }
+
+export { MergeStylesRootProvider }
+
+export { MergeStylesShadowRootProvider }
 
 export { mergeThemes }
 
@@ -11424,11 +11468,17 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 // @public
 export function updateT(color: IColor, t: number): IColor;
 
+export { useAdoptedStylesheet }
+
+export { useAdoptedStylesheetEx }
+
 export { useCustomizationSettings }
 
 export { useDocument }
 
 export { useFocusRects }
+
+export { useHasMergeStylesShadowRootContext }
 
 // @public (undocumented)
 export function useHeightOffset({ finalHeight }: IPositioningContainerProps, contentHost: React_2.RefObject<HTMLDivElement | null>): number;
@@ -11436,8 +11486,18 @@ export function useHeightOffset({ finalHeight }: IPositioningContainerProps, con
 // @public
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React_2.Ref<TElement>;
 
+export { useMergeStylesHooks }
+
+export { useMergeStylesRootStylesheets }
+
+export { useMergeStylesShadowRootContext }
+
 // @public
 export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>, overrideResponsiveMode?: ResponsiveMode) => ResponsiveMode;
+
+export { useShadowConfig }
+
+export { useStyled }
 
 // @public @deprecated
 export type UseStylesOptions = {

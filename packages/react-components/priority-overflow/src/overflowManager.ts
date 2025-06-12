@@ -54,6 +54,12 @@ export function createOverflowManager(): OverflowManager {
     const lte = overflowItems[lt];
     const rte = overflowItems[rt];
 
+    // TODO this should not happen but there have been reports of one of these items being undefined
+    // Try to find a consistent repro for this
+    if (!lte || !rte) {
+      return lte ? 1 : -1;
+    }
+
     if (lte.priority !== rte.priority) {
       return lte.priority > rte.priority ? 1 : -1;
     }
@@ -254,6 +260,12 @@ export function createOverflowManager(): OverflowManager {
   const removeItem: OverflowManager['removeItem'] = itemId => {
     if (!overflowItems[itemId]) {
       return;
+    }
+
+    if (observing) {
+      // We might be removing an item in an overflow which would not affect the tops,
+      // but we need to update anyway to update the overflow menu state
+      forceDispatch = true;
     }
 
     const item = overflowItems[itemId];

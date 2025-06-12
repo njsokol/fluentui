@@ -11,17 +11,20 @@ const typeAwareRules = {
 
 const root = configHelpers.findGitRoot();
 const unstableV9Packages = configHelpers.getV9UnstablePackages(root);
-const v9PackageDeps = Object.keys(
-  configHelpers.getPackageJson({ root, name: '@fluentui/react-components' }).dependencies,
-).filter(pkg => !unstableV9Packages.has(pkg));
+const v9PackageDeps = Object.keys(configHelpers.getPackageJson({ root, name: 'react-components' }).dependencies).filter(
+  pkg => !unstableV9Packages.has(pkg),
+);
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
   extends: [path.join(__dirname, 'base'), path.join(__dirname, 'react-config')],
+  plugins: ['react-compiler'],
   rules: {
     'jsdoc/check-tag-names': [
       'error',
       {
+        // Allow TSDoc tags
+        definedTags: ['remarks'],
         jsxTags: true,
       },
     ],
@@ -29,7 +32,21 @@ module.exports = {
     '@fluentui/no-context-default-value': [
       'error',
       {
+        // nx-ignore-next-line - this is a valid use case to ignore workspace packages. keeping  them part of the project dependencies would be wrong assumption
         imports: ['react', '@fluentui/react-context-selector', '@fluentui/global-context'],
+      },
+    ],
+    'react-compiler/react-compiler': ['error'],
+    '@typescript-eslint/no-restricted-types': [
+      'error',
+      {
+        types: {
+          'React.RefAttributes': {
+            message:
+              '`React.RefAttributes` is leaking string starting @types/react@18.2.61 creating invalid type contracts. Use `RefAttributes` from @fluentui/react-utilities instead',
+            fixWith: 'RefAttributes',
+          },
+        },
       },
     ],
   },
@@ -50,6 +67,7 @@ module.exports = {
             ],
           },
         ],
+        'react-compiler/react-compiler': 'off',
       },
     },
     {
@@ -57,6 +75,13 @@ module.exports = {
       rules: {
         'import/no-extraneous-dependencies': 'off',
         'react/jsx-no-bind': 'off',
+        'react-compiler/react-compiler': 'off',
+      },
+    },
+    {
+      files: '**/*.test.{ts,tsx}',
+      rules: {
+        'react-compiler/react-compiler': 'off',
       },
     },
     __internal.overrides.react,

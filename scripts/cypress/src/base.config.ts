@@ -33,6 +33,16 @@ const cypressWebpackConfig = (): Configuration => {
     });
   }
 
+  // TODO: remove this once esbuild-loader properly handles module loading https://github.com/privatenumber/esbuild-loader/issues/343#issuecomment-1845836603
+  baseWebpackConfig.ignoreWarnings = [
+    ...(baseWebpackConfig.ignoreWarnings ?? []),
+    {
+      module: /[esbuild-loader]/,
+      message:
+        /The specified tsconfig at\s+"[/a-z0-9-/.\s]+"\s+was applied to the file\s+"[/a-z0-9-.\s]+"\s+but does not match its "include" patterns/i,
+    },
+  ];
+
   baseWebpackConfig.resolve ??= {};
   baseWebpackConfig.resolve.plugins ??= [];
   baseWebpackConfig.resolve.plugins.push(
@@ -44,15 +54,15 @@ const cypressWebpackConfig = (): Configuration => {
   return baseWebpackConfig;
 };
 
-type BaseConfig = Omit<Cypress.ConfigOptions, 'component'> & {
-  component: Omit<Cypress.ConfigOptions['component'], 'devServer'> & {
+interface BaseConfig extends Cypress.ConfigOptions {
+  component: Cypress.Config['component'] & {
     devServer: {
       bundler: 'webpack';
       framework: 'react';
       webpackConfig: Configuration;
     };
   };
-};
+}
 
 export const baseConfig = defineConfig({
   video: false,

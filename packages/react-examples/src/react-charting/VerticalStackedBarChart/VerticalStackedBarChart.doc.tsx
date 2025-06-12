@@ -8,6 +8,8 @@ import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart
 import { VerticalStackedBarChartTooltipExample } from './VerticalStackedBarChart.AxisTooltip.Example';
 import { VerticalStackedBarChartCustomAccessibilityExample } from './VerticalStackedBarChart.CustomAccessibility.Example';
 import { VerticalStackedBarChartDateAxisExample } from './VerticalStackedBarChart.DateAxis.Example';
+import { VerticalStackedBarChartSecondaryYAxisExample } from './VerticalStackedBarChart.SecondaryYAxis.Example';
+import { VerticalStackedBarChartNegativeExample } from './VerticalStackedBarChart.Negative.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;
@@ -21,12 +23,16 @@ const VerticalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.CustomAccessibility.Example.tsx') as string;
 const VerticalStackedBarChartDateAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.DateAxis.Example.tsx') as string;
+const VerticalStackedBarChartSecondaryYAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.SecondaryYAxis.Example.tsx') as string;
+const VerticalStackedBarChartNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Negative.Example.tsx') as string;
 
 export const VerticalStackedBarChartPageProps: IDocPageProps = {
   title: 'VerticalStackedBarChart',
   componentName: 'VerticalStackedBarChart',
   componentUrl:
-    'https://github.com/microsoft/fluentui/VerticalStackedBar/master/packages/react-charting/src/components/VerticalStackedBarChart',
+    'https://github.com/microsoft/fluentui/VerticalStackedBar/master/packages/charts/react-charting/src/components/VerticalStackedBarChart',
   examples: [
     {
       title: 'VerticalStackedBarChart basic',
@@ -57,6 +63,16 @@ export const VerticalStackedBarChartPageProps: IDocPageProps = {
       title: 'VerticalStackedBarChart Date Axis',
       code: VerticalStackedBarChartDateAxisExampleCode,
       view: <VerticalStackedBarChartDateAxisExample />,
+    },
+    {
+      title: 'VerticalStackedBarChart secondary y-axis',
+      code: VerticalStackedBarChartSecondaryYAxisExampleCode,
+      view: <VerticalStackedBarChartSecondaryYAxisExample />,
+    },
+    {
+      title: 'VerticalStackedBarChart Negative',
+      code: VerticalStackedBarChartNegativeExampleCode,
+      view: <VerticalStackedBarChartNegativeExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/docs/VerticalStackedBarChartOverview.md'),

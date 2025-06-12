@@ -1,8 +1,10 @@
-import { Tree, formatFiles, names } from '@nx/devkit';
+import { Tree, formatFiles, names, joinPathFragments, offsetFromRoot } from '@nx/devkit';
 
 import { getProjectConfig, printUserLogs, UserLog } from '../../utils';
 
 import type { CypressComponentConfigurationGeneratorSchema } from './schema';
+
+import { assertStoriesProject } from '../split-library-in-two/shared';
 
 import { addFiles } from './lib/add-files';
 
@@ -10,16 +12,17 @@ import { addFiles } from './lib/add-files';
 interface _NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
 export default async function (tree: Tree, schema: CypressComponentConfigurationGeneratorSchema) {
-  const userLog: UserLog = [];
   const normalizedOptions = normalizeOptions(tree, schema);
 
-  if (normalizedOptions.projectConfig.projectType === 'application') {
-    userLog.push({ type: 'warn', message: 'we dont support cypress component tests for applications' });
-    printUserLogs(userLog);
+  const isSplitProject = tree.exists(
+    joinPathFragments(normalizedOptions.projectConfig.root, '../stories/project.json'),
+  );
+
+  if (!assertOptions(tree, { isSplitProject, ...normalizedOptions })) {
     return;
   }
 
-  addFiles(tree, normalizedOptions);
+  addFiles(tree, { ...normalizedOptions, rootOffset: offsetFromRoot(tree.root) });
 
   await formatFiles(tree);
 }
@@ -32,4 +35,18 @@ function normalizeOptions(tree: Tree, options: CypressComponentConfigurationGene
     ...project,
     ...names(options.project),
   };
+}
+
+function assertOptions(tree: Tree, options: ReturnType<typeof normalizeOptions> & { isSplitProject: boolean }) {
+  if (options.projectConfig.projectType === 'application') {
+    const userLog: UserLog = [];
+    userLog.push({ type: 'warn', message: `We don't support cypress component tests for applications` });
+    printUserLogs(userLog);
+
+    return false;
+  }
+
+  assertStoriesProject(tree, { isSplitProject: options.isSplitProject, project: options.projectConfig });
+
+  return true;
 }

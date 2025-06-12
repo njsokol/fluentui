@@ -43,13 +43,30 @@ import { AccordionState } from '@fluentui/react-accordion';
 import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
+import { AlphaSlider } from '@fluentui/react-color-picker';
+import { alphaSliderClassNames } from '@fluentui/react-color-picker';
+import { AlphaSliderProps } from '@fluentui/react-color-picker';
+import { AlphaSliderSlots } from '@fluentui/react-color-picker';
+import { AlphaSliderState } from '@fluentui/react-color-picker';
 import { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 import { AnnounceProvider } from '@fluentui/react-shared-contexts';
+import { AppItem } from '@fluentui/react-nav';
+import { appItemClassNames } from '@fluentui/react-nav';
+import { AppItemProps } from '@fluentui/react-nav';
+import { AppItemSlots } from '@fluentui/react-nav';
+import { AppItemState } from '@fluentui/react-nav';
+import { AppItemStatic } from '@fluentui/react-nav';
+import { appItemStaticClassNames } from '@fluentui/react-nav';
+import { AppItemStaticProps } from '@fluentui/react-nav';
+import { AppItemStaticSlots } from '@fluentui/react-nav';
+import { AppItemStaticState } from '@fluentui/react-nav';
 import { AriaLiveAnnouncer } from '@fluentui/react-aria';
 import { AriaLiveAnnouncerProps } from '@fluentui/react-aria';
 import { AriaLiveAnnouncerState } from '@fluentui/react-aria';
 import { arrowHeights } from '@fluentui/react-popover';
 import { assertSlots } from '@fluentui/react-utilities';
+import { AtomMotion } from '@fluentui/react-motion';
+import { AtomMotionFn } from '@fluentui/react-motion';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarGroup } from '@fluentui/react-avatar';
@@ -150,13 +167,90 @@ import { CardPreviewState } from '@fluentui/react-card';
 import { CardProps } from '@fluentui/react-card';
 import { CardSlots } from '@fluentui/react-card';
 import { CardState } from '@fluentui/react-card';
+import { Carousel } from '@fluentui/react-carousel';
+import { CarouselAnnouncerFunction } from '@fluentui/react-carousel';
+import { CarouselAutoplayButton } from '@fluentui/react-carousel';
+import { carouselAutoplayButtonClassNames } from '@fluentui/react-carousel';
+import { CarouselAutoplayButtonProps } from '@fluentui/react-carousel';
+import { CarouselAutoplayButtonSlots } from '@fluentui/react-carousel';
+import { CarouselAutoplayButtonState } from '@fluentui/react-carousel';
+import { CarouselButton } from '@fluentui/react-carousel';
+import { carouselButtonClassNames } from '@fluentui/react-carousel';
+import { CarouselButtonProps } from '@fluentui/react-carousel';
+import { CarouselButtonSlots } from '@fluentui/react-carousel';
+import { CarouselButtonState } from '@fluentui/react-carousel';
+import { CarouselCard } from '@fluentui/react-carousel';
+import { carouselCardClassNames } from '@fluentui/react-carousel';
+import { CarouselCardProps } from '@fluentui/react-carousel';
+import { CarouselCardSlots } from '@fluentui/react-carousel';
+import { CarouselCardState } from '@fluentui/react-carousel';
+import { carouselClassNames } from '@fluentui/react-carousel';
+import { carouselContextDefaultValue } from '@fluentui/react-carousel';
+import { CarouselContextValue } from '@fluentui/react-carousel';
+import { CarouselContextValues } from '@fluentui/react-carousel';
+import { CarouselIndexChangeData } from '@fluentui/react-carousel';
+import { CarouselNav } from '@fluentui/react-carousel';
+import { CarouselNavButton } from '@fluentui/react-carousel';
+import { carouselNavButtonClassNames } from '@fluentui/react-carousel';
+import { CarouselNavButtonProps } from '@fluentui/react-carousel';
+import { CarouselNavButtonSlots } from '@fluentui/react-carousel';
+import { CarouselNavButtonState } from '@fluentui/react-carousel';
+import { carouselNavClassNames } from '@fluentui/react-carousel';
+import { CarouselNavContainer } from '@fluentui/react-carousel';
+import { carouselNavContainerClassNames } from '@fluentui/react-carousel';
+import { CarouselNavContainerProps } from '@fluentui/react-carousel';
+import { CarouselNavContainerSlots } from '@fluentui/react-carousel';
+import { CarouselNavContainerState } from '@fluentui/react-carousel';
+import { CarouselNavImageButton } from '@fluentui/react-carousel';
+import { carouselNavImageButtonClassNames } from '@fluentui/react-carousel';
+import { CarouselNavImageButtonProps } from '@fluentui/react-carousel';
+import { CarouselNavImageButtonSlots } from '@fluentui/react-carousel';
+import { CarouselNavImageButtonState } from '@fluentui/react-carousel';
+import { CarouselNavProps } from '@fluentui/react-carousel';
+import { CarouselNavSlots } from '@fluentui/react-carousel';
+import { CarouselNavState } from '@fluentui/react-carousel';
+import { CarouselProps } from '@fluentui/react-carousel';
+import { CarouselProvider } from '@fluentui/react-carousel';
+import { CarouselSlider } from '@fluentui/react-carousel';
+import { carouselSliderClassNames } from '@fluentui/react-carousel';
+import { CarouselSliderProps } from '@fluentui/react-carousel';
+import { CarouselSliderSlots } from '@fluentui/react-carousel';
+import { CarouselSliderState } from '@fluentui/react-carousel';
+import { CarouselSlots } from '@fluentui/react-carousel';
+import { CarouselState } from '@fluentui/react-carousel';
+import { CarouselViewport } from '@fluentui/react-carousel';
+import { carouselViewportClassNames } from '@fluentui/react-carousel';
+import { CarouselViewportProps } from '@fluentui/react-carousel';
+import { CarouselViewportSlots } from '@fluentui/react-carousel';
+import { CarouselViewportState } from '@fluentui/react-carousel';
+import { CellRenderFunction } from '@fluentui/react-table';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { checkboxClassNames } from '@fluentui/react-checkbox';
 import { CheckboxOnChangeData } from '@fluentui/react-checkbox';
 import { CheckboxProps } from '@fluentui/react-checkbox';
 import { CheckboxSlots } from '@fluentui/react-checkbox';
 import { CheckboxState } from '@fluentui/react-checkbox';
+import { ColorArea } from '@fluentui/react-color-picker';
+import { colorAreaClassNames } from '@fluentui/react-color-picker';
+import { ColorAreaProps } from '@fluentui/react-color-picker';
+import { ColorAreaSlots } from '@fluentui/react-color-picker';
+import { ColorAreaState } from '@fluentui/react-color-picker';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
+import { ColorPicker } from '@fluentui/react-color-picker';
+import { colorPickerClassNames } from '@fluentui/react-color-picker';
+import { ColorPickerProps } from '@fluentui/react-color-picker';
+import { ColorPickerSlots } from '@fluentui/react-color-picker';
+import { ColorPickerState } from '@fluentui/react-color-picker';
+import { ColorSlider } from '@fluentui/react-color-picker';
+import { colorSliderClassNames } from '@fluentui/react-color-picker';
+import { ColorSliderProps } from '@fluentui/react-color-picker';
+import { ColorSliderSlots } from '@fluentui/react-color-picker';
+import { ColorSliderState } from '@fluentui/react-color-picker';
+import { ColorSwatch } from '@fluentui/react-swatch-picker';
+import { colorSwatchClassNames } from '@fluentui/react-swatch-picker';
+import { ColorSwatchProps } from '@fluentui/react-swatch-picker';
+import { ColorSwatchSlots } from '@fluentui/react-swatch-picker';
+import { ColorSwatchState } from '@fluentui/react-swatch-picker';
 import { ColorTokens } from '@fluentui/react-theme';
 import { ColumnIdContextProvider } from '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
@@ -189,6 +283,9 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
+import { createMotionComponent } from '@fluentui/react-motion';
+import { createPresenceComponent } from '@fluentui/react-motion';
+import { createPresenceComponentVariant } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -255,9 +352,11 @@ import { DialogContentProps } from '@fluentui/react-dialog';
 import { DialogContentSlots } from '@fluentui/react-dialog';
 import { DialogContentState } from '@fluentui/react-dialog';
 import { DialogContextValue } from '@fluentui/react-dialog';
+import { DialogModalType } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
+import { DialogProvider } from '@fluentui/react-dialog';
 import { DialogSlots } from '@fluentui/react-dialog';
 import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
@@ -290,6 +389,7 @@ import { drawerBodyClassNames } from '@fluentui/react-drawer';
 import { DrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState } from '@fluentui/react-drawer';
+import { DrawerContextValue } from '@fluentui/react-drawer';
 import { DrawerFooter } from '@fluentui/react-drawer';
 import { drawerFooterClassNames } from '@fluentui/react-drawer';
 import { DrawerFooterProps } from '@fluentui/react-drawer';
@@ -311,6 +411,7 @@ import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
+import { DrawerProvider } from '@fluentui/react-drawer';
 import { DrawerSlots } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import { Dropdown } from '@fluentui/react-combobox';
@@ -322,6 +423,11 @@ import { DropdownProps } from '@fluentui/react-combobox';
 import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
 import { DurationTokens } from '@fluentui/react-theme';
+import { EmptySwatch } from '@fluentui/react-swatch-picker';
+import { emptySwatchClassNames } from '@fluentui/react-swatch-picker';
+import { EmptySwatchProps } from '@fluentui/react-swatch-picker';
+import { EmptySwatchSlots } from '@fluentui/react-swatch-picker';
+import { EmptySwatchState } from '@fluentui/react-swatch-picker';
 import { Field } from '@fluentui/react-field';
 import { fieldClassNames } from '@fluentui/react-field';
 import { FieldContextProvider } from '@fluentui/react-field';
@@ -355,10 +461,15 @@ import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
+import { getSlotClassNameProp_unstable } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
 import { GriffelResetStyle } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
+import { Hamburger } from '@fluentui/react-nav';
+import { hamburgerClassNames } from '@fluentui/react-nav';
+import { HamburgerProps } from '@fluentui/react-nav';
+import { HamburgerState } from '@fluentui/react-nav';
 import { HeadlessFlatTree } from '@fluentui/react-tree';
 import { HeadlessFlatTreeItem } from '@fluentui/react-tree';
 import { HeadlessFlatTreeItemProps } from '@fluentui/react-tree';
@@ -370,6 +481,16 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { ImageSwatch } from '@fluentui/react-swatch-picker';
+import { imageSwatchClassNames } from '@fluentui/react-swatch-picker';
+import { ImageSwatchProps } from '@fluentui/react-swatch-picker';
+import { ImageSwatchSlots } from '@fluentui/react-swatch-picker';
+import { ImageSwatchState } from '@fluentui/react-swatch-picker';
+import { InfoButton } from '@fluentui/react-infolabel';
+import { infoButtonClassNames } from '@fluentui/react-infolabel';
+import { InfoButtonProps } from '@fluentui/react-infolabel';
+import { InfoButtonSlots } from '@fluentui/react-infolabel';
+import { InfoButtonState } from '@fluentui/react-infolabel';
 import { InfoLabel } from '@fluentui/react-infolabel';
 import { infoLabelClassNames } from '@fluentui/react-infolabel';
 import { InfoLabelProps } from '@fluentui/react-infolabel';
@@ -402,6 +523,7 @@ import { InteractionTagSecondarySlots } from '@fluentui/react-tags';
 import { InteractionTagSecondaryState } from '@fluentui/react-tags';
 import { InteractionTagSlots } from '@fluentui/react-tags';
 import { InteractionTagState } from '@fluentui/react-tags';
+import { isHTMLElement } from '@fluentui/react-utilities';
 import { isTruncatableBreadcrumbContent } from '@fluentui/react-breadcrumb';
 import { Label } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
@@ -416,6 +538,7 @@ import { linkClassNames } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
+import { List } from '@fluentui/react-list';
 import { Listbox } from '@fluentui/react-combobox';
 import { listboxClassNames } from '@fluentui/react-combobox';
 import { ListboxContextValue } from '@fluentui/react-combobox';
@@ -424,6 +547,15 @@ import { ListboxProps } from '@fluentui/react-combobox';
 import { ListboxProvider } from '@fluentui/react-combobox';
 import { ListboxSlots } from '@fluentui/react-combobox';
 import { ListboxState } from '@fluentui/react-combobox';
+import { listClassNames } from '@fluentui/react-list';
+import { ListItem } from '@fluentui/react-list';
+import { listItemClassNames } from '@fluentui/react-list';
+import { ListItemProps } from '@fluentui/react-list';
+import { ListItemSlots } from '@fluentui/react-list';
+import { ListItemState } from '@fluentui/react-list';
+import { ListProps } from '@fluentui/react-list';
+import { ListSlots } from '@fluentui/react-list';
+import { ListState } from '@fluentui/react-list';
 import { makeResetStyles } from '@griffel/react';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
@@ -475,6 +607,8 @@ import { MenuItemSelectableProps } from '@fluentui/react-menu';
 import { MenuItemSelectableState } from '@fluentui/react-menu';
 import { MenuItemSlots } from '@fluentui/react-menu';
 import { MenuItemState } from '@fluentui/react-menu';
+import { MenuItemSwitch } from '@fluentui/react-menu';
+import { menuItemSwitchClassNames } from '@fluentui/react-menu';
 import { MenuList } from '@fluentui/react-menu';
 import { menuListClassNames } from '@fluentui/react-menu';
 import { MenuListContextValue } from '@fluentui/react-menu';
@@ -510,6 +644,7 @@ import { mergeClasses } from '@griffel/react';
 import { MessageBar } from '@fluentui/react-message-bar';
 import { MessageBarActions } from '@fluentui/react-message-bar';
 import { messageBarActionsClassNames } from '@fluentui/react-message-bar';
+import { MessageBarActionsContextValues } from '@fluentui/react-message-bar';
 import { MessageBarActionsProps } from '@fluentui/react-message-bar';
 import { MessageBarActionsSlots } from '@fluentui/react-message-bar';
 import { MessageBarActionsState } from '@fluentui/react-message-bar';
@@ -521,6 +656,7 @@ import { MessageBarBodyState } from '@fluentui/react-message-bar';
 import { messageBarClassNames } from '@fluentui/react-message-bar';
 import { MessageBarContextProvider } from '@fluentui/react-message-bar';
 import { MessageBarContextValue } from '@fluentui/react-message-bar';
+import { MessageBarContextValues } from '@fluentui/react-message-bar';
 import { MessageBarGroup } from '@fluentui/react-message-bar';
 import { messageBarGroupClassNames } from '@fluentui/react-message-bar';
 import { MessageBarGroupProps } from '@fluentui/react-message-bar';
@@ -535,6 +671,79 @@ import { messageBarTitleClassNames } from '@fluentui/react-message-bar';
 import { MessageBarTitleProps } from '@fluentui/react-message-bar';
 import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
 import { MessageBarTitleState } from '@fluentui/react-message-bar';
+import { MessageBarTransitionContextValue } from '@fluentui/react-message-bar';
+import { MotionComponentProps } from '@fluentui/react-motion';
+import { MotionImperativeRef } from '@fluentui/react-motion';
+import { motionTokens } from '@fluentui/react-motion';
+import { Nav } from '@fluentui/react-nav';
+import { NavButtonRenderFunction } from '@fluentui/react-carousel';
+import { NavCategory } from '@fluentui/react-nav';
+import { NavCategoryContextValues } from '@fluentui/react-nav';
+import { NavCategoryItem } from '@fluentui/react-nav';
+import { navCategoryItemClassNames } from '@fluentui/react-nav';
+import { NavCategoryItemContextValues } from '@fluentui/react-nav';
+import { NavCategoryItemProps } from '@fluentui/react-nav';
+import { NavCategoryItemProvider } from '@fluentui/react-nav';
+import { NavCategoryItemSlots } from '@fluentui/react-nav';
+import { NavCategoryItemState } from '@fluentui/react-nav';
+import { NavCategoryProps } from '@fluentui/react-nav';
+import { NavCategoryProvider } from '@fluentui/react-nav';
+import { NavCategoryState } from '@fluentui/react-nav';
+import { navClassNames } from '@fluentui/react-nav';
+import { NavContextValue } from '@fluentui/react-nav';
+import { NavContextValues } from '@fluentui/react-nav';
+import { NavDensity } from '@fluentui/react-nav';
+import { NavDivider } from '@fluentui/react-nav';
+import { navDividerClassNames } from '@fluentui/react-nav';
+import { NavDividerProps } from '@fluentui/react-nav';
+import { NavDividerState } from '@fluentui/react-nav';
+import { NavDrawer } from '@fluentui/react-nav';
+import { NavDrawerBody } from '@fluentui/react-nav';
+import { navDrawerBodyClassNames } from '@fluentui/react-nav';
+import { NavDrawerBodyProps } from '@fluentui/react-nav';
+import { NavDrawerBodySlots } from '@fluentui/react-nav';
+import { NavDrawerBodyState } from '@fluentui/react-nav';
+import { navDrawerClassNames } from '@fluentui/react-nav';
+import { NavDrawerFooter } from '@fluentui/react-nav';
+import { navDrawerFooterClassNames } from '@fluentui/react-nav';
+import { NavDrawerFooterProps } from '@fluentui/react-nav';
+import { NavDrawerFooterSlots } from '@fluentui/react-nav';
+import { NavDrawerFooterState } from '@fluentui/react-nav';
+import { NavDrawerHeader } from '@fluentui/react-nav';
+import { navDrawerHeaderClassNames } from '@fluentui/react-nav';
+import { NavDrawerHeaderProps } from '@fluentui/react-nav';
+import { NavDrawerHeaderSlots } from '@fluentui/react-nav';
+import { NavDrawerHeaderState } from '@fluentui/react-nav';
+import { NavDrawerProps } from '@fluentui/react-nav';
+import { NavDrawerSlots } from '@fluentui/react-nav';
+import { NavDrawerState } from '@fluentui/react-nav';
+import { NavItem } from '@fluentui/react-nav';
+import { navItemClassNames } from '@fluentui/react-nav';
+import { NavItemProps } from '@fluentui/react-nav';
+import { NavItemRegisterData } from '@fluentui/react-nav';
+import { NavItemSlots } from '@fluentui/react-nav';
+import { NavItemState } from '@fluentui/react-nav';
+import { NavItemValue } from '@fluentui/react-nav';
+import { NavProps } from '@fluentui/react-nav';
+import { NavProvider } from '@fluentui/react-nav';
+import { NavSectionHeader } from '@fluentui/react-nav';
+import { navSectionHeaderClassNames } from '@fluentui/react-nav';
+import { NavSectionHeaderProps } from '@fluentui/react-nav';
+import { NavSectionHeaderSlots } from '@fluentui/react-nav';
+import { NavSectionHeaderState } from '@fluentui/react-nav';
+import { NavSlots } from '@fluentui/react-nav';
+import { NavState } from '@fluentui/react-nav';
+import { NavSubItem } from '@fluentui/react-nav';
+import { navSubItemClassNames } from '@fluentui/react-nav';
+import { NavSubItemGroup } from '@fluentui/react-nav';
+import { navSubItemGroupClassNames } from '@fluentui/react-nav';
+import { NavSubItemGroupProps } from '@fluentui/react-nav';
+import { NavSubItemGroupSlots } from '@fluentui/react-nav';
+import { NavSubItemGroupState } from '@fluentui/react-nav';
+import { NavSubItemProps } from '@fluentui/react-nav';
+import { NavSubItemSlots } from '@fluentui/react-nav';
+import { NavSubItemState } from '@fluentui/react-nav';
+import { OnNavItemSelectData } from '@fluentui/react-nav';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
 import { OnSelectionChangeData } from '@fluentui/react-utilities';
@@ -592,8 +801,13 @@ import { Portal } from '@fluentui/react-portal';
 import { PortalMountNodeProvider } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import { PortalState } from '@fluentui/react-portal';
+import { PositioningBoundary } from '@fluentui/react-positioning';
+import { PositioningConfigurationFn } from '@fluentui/react-positioning';
+import { PositioningConfigurationFnOptions } from '@fluentui/react-positioning';
+import { PositioningConfigurationProvider } from '@fluentui/react-positioning';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
 import { PositioningProps } from '@fluentui/react-positioning';
+import { PositioningRect } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -608,8 +822,12 @@ import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import { presenceBlockedRegular } from '@fluentui/react-badge';
 import { presenceBusyFilled } from '@fluentui/react-badge';
+import { PresenceComponentProps } from '@fluentui/react-motion';
 import { presenceDndFilled } from '@fluentui/react-badge';
 import { presenceDndRegular } from '@fluentui/react-badge';
+import { PresenceGroup } from '@fluentui/react-motion';
+import { PresenceMotion } from '@fluentui/react-motion';
+import { PresenceMotionFn } from '@fluentui/react-motion';
 import { presenceOfflineRegular } from '@fluentui/react-badge';
 import { presenceOofRegular } from '@fluentui/react-badge';
 import { presenceUnknownRegular } from '@fluentui/react-badge';
@@ -652,11 +870,15 @@ import { RatingOnChangeEventData } from '@fluentui/react-rating';
 import { RatingProps } from '@fluentui/react-rating';
 import { RatingSlots } from '@fluentui/react-rating';
 import { RatingState } from '@fluentui/react-rating';
+import { RegisterNavItemEventHandler } from '@fluentui/react-nav';
 import { RegisterTabEventHandler } from '@fluentui/react-tabs';
 import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
 import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { renderAlphaSlider_unstable } from '@fluentui/react-color-picker';
+import { renderAppItem_unstable } from '@fluentui/react-nav';
+import { renderAppItemStatic_unstable } from '@fluentui/react-nav';
 import { renderAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { renderAvatar_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
@@ -672,7 +894,21 @@ import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
+import { renderCarousel_unstable } from '@fluentui/react-carousel';
+import { renderCarouselAutoplayButton_unstable } from '@fluentui/react-carousel';
+import { renderCarouselButton_unstable } from '@fluentui/react-carousel';
+import { renderCarouselCard_unstable } from '@fluentui/react-carousel';
+import { renderCarouselNav_unstable } from '@fluentui/react-carousel';
+import { renderCarouselNavButton_unstable } from '@fluentui/react-carousel';
+import { renderCarouselNavContainer_unstable } from '@fluentui/react-carousel';
+import { renderCarouselNavImageButton_unstable } from '@fluentui/react-carousel';
+import { renderCarouselSlider_unstable } from '@fluentui/react-carousel';
+import { renderCarouselViewport_unstable } from '@fluentui/react-carousel';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
+import { renderColorArea_unstable } from '@fluentui/react-color-picker';
+import { renderColorPicker_unstable } from '@fluentui/react-color-picker';
+import { renderColorSlider_unstable } from '@fluentui/react-color-picker';
+import { renderColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
 import { renderDataGrid_unstable } from '@fluentui/react-table';
@@ -697,11 +933,14 @@ import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
+import { renderEmptySwatch_unstable } from '@fluentui/react-swatch-picker';
 import { RendererProvider } from '@griffel/react';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderImageSwatch_unstable } from '@fluentui/react-swatch-picker';
+import { renderInfoButton_unstable } from '@fluentui/react-infolabel';
 import { renderInfoLabel_unstable } from '@fluentui/react-infolabel';
 import { renderInlineDrawer_unstable } from '@fluentui/react-drawer';
 import { renderInput_unstable } from '@fluentui/react-input';
@@ -710,7 +949,9 @@ import { renderInteractionTagPrimary_unstable } from '@fluentui/react-tags';
 import { renderInteractionTagSecondary_unstable } from '@fluentui/react-tags';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
+import { renderList_unstable } from '@fluentui/react-list';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
+import { renderListItem_unstable } from '@fluentui/react-list';
 import { renderMenu_unstable } from '@fluentui/react-menu';
 import { renderMenuButton_unstable } from '@fluentui/react-button';
 import { renderMenuDivider_unstable } from '@fluentui/react-menu';
@@ -720,6 +961,7 @@ import { renderMenuItem_unstable } from '@fluentui/react-menu';
 import { renderMenuItemCheckbox_unstable } from '@fluentui/react-menu';
 import { renderMenuItemLink_unstable } from '@fluentui/react-menu';
 import { renderMenuItemRadio_unstable } from '@fluentui/react-menu';
+import { renderMenuItemSwitch_unstable } from '@fluentui/react-menu';
 import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
 import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
@@ -729,6 +971,14 @@ import { renderMessageBarActions_unstable } from '@fluentui/react-message-bar';
 import { renderMessageBarBody_unstable } from '@fluentui/react-message-bar';
 import { renderMessageBarGroup_unstable } from '@fluentui/react-message-bar';
 import { renderMessageBarTitle_unstable } from '@fluentui/react-message-bar';
+import { renderNav_unstable } from '@fluentui/react-nav';
+import { renderNavCategory_unstable } from '@fluentui/react-nav';
+import { renderNavCategoryItem_unstable } from '@fluentui/react-nav';
+import { renderNavDrawer_unstable } from '@fluentui/react-nav';
+import { renderNavItem_unstable } from '@fluentui/react-nav';
+import { renderNavSectionHeader_unstable } from '@fluentui/react-nav';
+import { renderNavSubItem_unstable } from '@fluentui/react-nav';
+import { renderNavSubItemGroup_unstable } from '@fluentui/react-nav';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
 import { renderOverlayDrawer_unstable } from '@fluentui/react-drawer';
@@ -751,6 +1001,10 @@ import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderSplitNavItem_unstable } from '@fluentui/react-nav';
+import { renderSwatchPicker_unstable } from '@fluentui/react-swatch-picker';
+import { renderSwatchPickerGrid } from '@fluentui/react-swatch-picker';
+import { renderSwatchPickerRow_unstable } from '@fluentui/react-swatch-picker';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
 import { renderTab_unstable } from '@fluentui/react-tabs';
 import { renderTable_unstable } from '@fluentui/react-table';
@@ -766,6 +1020,27 @@ import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderTag_unstable } from '@fluentui/react-tags';
 import { renderTagGroup_unstable } from '@fluentui/react-tags';
+import { renderTagPicker_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerButton_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerControl_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerGroup_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerInput_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerList_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerOption_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerOptionGroup } from '@fluentui/react-tag-picker';
+import { renderTeachingPopover_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverBody_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarousel_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselCard_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselFooter_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselNav_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselNavButton_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverCarouselPageCount_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverFooter_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverHeader_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverSurface_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverTitle_unstable } from '@fluentui/react-teaching-popover';
+import { renderTeachingPopoverTrigger_unstable } from '@fluentui/react-teaching-popover';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
 import { renderToast_unstable } from '@fluentui/react-toast';
@@ -859,6 +1134,11 @@ import { splitButtonClassNames } from '@fluentui/react-button';
 import { SplitButtonProps } from '@fluentui/react-button';
 import { SplitButtonSlots } from '@fluentui/react-button';
 import { SplitButtonState } from '@fluentui/react-button';
+import { SplitNavItem } from '@fluentui/react-nav';
+import { splitNavItemClassNames } from '@fluentui/react-nav';
+import { SplitNavItemProps } from '@fluentui/react-nav';
+import { SplitNavItemSlots } from '@fluentui/react-nav';
+import { SplitNavItemState } from '@fluentui/react-nav';
 import { SSRProvider } from '@fluentui/react-utilities';
 import { StrokeWidthTokens } from '@fluentui/react-theme';
 import { Subtitle1 } from '@fluentui/react-text';
@@ -868,6 +1148,25 @@ import { subtitle2ClassNames } from '@fluentui/react-text';
 import { Subtitle2Stronger } from '@fluentui/react-text';
 import { subtitle2StrongerClassNames } from '@fluentui/react-text';
 import { SubtreeContextValue } from '@fluentui/react-tree';
+import { swatchCSSVars } from '@fluentui/react-swatch-picker';
+import { SwatchPicker } from '@fluentui/react-swatch-picker';
+import { swatchPickerClassNames } from '@fluentui/react-swatch-picker';
+import { swatchPickerContextDefaultValue } from '@fluentui/react-swatch-picker';
+import { SwatchPickerContextValue } from '@fluentui/react-swatch-picker';
+import { SwatchPickerContextValues } from '@fluentui/react-swatch-picker';
+import { SwatchPickerGridProps } from '@fluentui/react-swatch-picker';
+import { SwatchPickerOnSelectEventHandler } from '@fluentui/react-swatch-picker';
+import { SwatchPickerOnSelectionChangeData } from '@fluentui/react-swatch-picker';
+import { SwatchPickerProps } from '@fluentui/react-swatch-picker';
+import { SwatchPickerProvider } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRow } from '@fluentui/react-swatch-picker';
+import { swatchPickerRowClassNames } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRowProps } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRowSlots } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRowState } from '@fluentui/react-swatch-picker';
+import { SwatchPickerSlots } from '@fluentui/react-swatch-picker';
+import { SwatchPickerState } from '@fluentui/react-swatch-picker';
+import { SwatchProps } from '@fluentui/react-swatch-picker';
 import { Switch } from '@fluentui/react-switch';
 import { switchClassNames } from '@fluentui/react-switch';
 import { SwitchOnChangeData } from '@fluentui/react-switch';
@@ -967,12 +1266,118 @@ import { tagGroupClassNames } from '@fluentui/react-tags';
 import { TagGroupProps } from '@fluentui/react-tags';
 import { TagGroupSlots } from '@fluentui/react-tags';
 import { TagGroupState } from '@fluentui/react-tags';
+import { TagPicker } from '@fluentui/react-tag-picker';
+import { TagPickerButton } from '@fluentui/react-tag-picker';
+import { tagPickerButtonClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerButtonProps } from '@fluentui/react-tag-picker';
+import { TagPickerButtonSlots } from '@fluentui/react-tag-picker';
+import { TagPickerButtonState } from '@fluentui/react-tag-picker';
+import { TagPickerContextValue } from '@fluentui/react-tag-picker';
+import { TagPickerContextValues } from '@fluentui/react-tag-picker';
+import { TagPickerControl } from '@fluentui/react-tag-picker';
+import { tagPickerControlClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerControlProps } from '@fluentui/react-tag-picker';
+import { TagPickerControlSlots } from '@fluentui/react-tag-picker';
+import { TagPickerControlState } from '@fluentui/react-tag-picker';
+import { TagPickerGroup } from '@fluentui/react-tag-picker';
+import { tagPickerGroupClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerGroupProps } from '@fluentui/react-tag-picker';
+import { TagPickerGroupSlots } from '@fluentui/react-tag-picker';
+import { TagPickerGroupState } from '@fluentui/react-tag-picker';
+import { TagPickerInput } from '@fluentui/react-tag-picker';
+import { tagPickerInputClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerInputProps } from '@fluentui/react-tag-picker';
+import { TagPickerInputSlots } from '@fluentui/react-tag-picker';
+import { TagPickerInputState } from '@fluentui/react-tag-picker';
+import { TagPickerList } from '@fluentui/react-tag-picker';
+import { tagPickerListClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerListProps } from '@fluentui/react-tag-picker';
+import { TagPickerListSlots } from '@fluentui/react-tag-picker';
+import { TagPickerListState } from '@fluentui/react-tag-picker';
+import { TagPickerOnOpenChangeData } from '@fluentui/react-tag-picker';
+import { TagPickerOnOptionSelectData } from '@fluentui/react-tag-picker';
+import { TagPickerOption } from '@fluentui/react-tag-picker';
+import { tagPickerOptionClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroup } from '@fluentui/react-tag-picker';
+import { tagPickerOptionGroupClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroupProps } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroupSlots } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroupState } from '@fluentui/react-tag-picker';
+import { TagPickerOptionProps } from '@fluentui/react-tag-picker';
+import { TagPickerOptionSlots } from '@fluentui/react-tag-picker';
+import { TagPickerOptionState } from '@fluentui/react-tag-picker';
+import { TagPickerProps } from '@fluentui/react-tag-picker';
+import { TagPickerSize } from '@fluentui/react-tag-picker';
+import { TagPickerSlots } from '@fluentui/react-tag-picker';
+import { TagPickerState } from '@fluentui/react-tag-picker';
 import { TagProps } from '@fluentui/react-tags';
 import { TagShape } from '@fluentui/react-tags';
 import { TagSize } from '@fluentui/react-tags';
 import { TagSlots } from '@fluentui/react-tags';
 import { TagState } from '@fluentui/react-tags';
 import { TagValue } from '@fluentui/react-tags';
+import { TeachingPopover } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverBody } from '@fluentui/react-teaching-popover';
+import { teachingPopoverBodyClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverBodyProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverBodySlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverBodyState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarousel } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselCard } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselCardClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselCardProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselCardSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselCardState } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooter } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselFooterClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooterProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooterSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselFooterState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNav } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavButton } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselNavButtonClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavButtonProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavButtonSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavButtonState } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselNavClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselNavState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCount } from '@fluentui/react-teaching-popover';
+import { teachingPopoverCarouselPageCountClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountRenderFunction } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselPageCountState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverCarouselState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverFooter } from '@fluentui/react-teaching-popover';
+import { teachingPopoverFooterClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverFooterProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverFooterState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeader } from '@fluentui/react-teaching-popover';
+import { teachingPopoverHeaderClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeaderProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeaderSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverHeaderState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverSurface } from '@fluentui/react-teaching-popover';
+import { teachingPopoverSurfaceClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverSurfaceProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverSurfaceSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverSurfaceState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitle } from '@fluentui/react-teaching-popover';
+import { teachingPopoverTitleClassNames } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitleProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitleSlots } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTitleState } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTrigger } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTriggerChildProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTriggerProps } from '@fluentui/react-teaching-popover';
+import { TeachingPopoverTriggerState } from '@fluentui/react-teaching-popover';
 import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
@@ -1101,6 +1506,7 @@ import { TreeOpenChangeData } from '@fluentui/react-tree';
 import { TreeOpenChangeEvent } from '@fluentui/react-tree';
 import { TreeProps } from '@fluentui/react-tree';
 import { TreeProvider } from '@fluentui/react-tree';
+import { TreeRootReset } from '@fluentui/react-tree';
 import { TreeSelectionValue } from '@fluentui/react-tree';
 import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
@@ -1123,7 +1529,14 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAlphaSlider_unstable } from '@fluentui/react-color-picker';
+import { useAlphaSliderStyles_unstable } from '@fluentui/react-color-picker';
+import { useAnimationFrame } from '@fluentui/react-utilities';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
+import { useAppItem_unstable } from '@fluentui/react-nav';
+import { useAppItemStatic_unstable } from '@fluentui/react-nav';
+import { useAppItemStaticStyles_unstable } from '@fluentui/react-nav';
+import { useAppItemStyles_unstable } from '@fluentui/react-nav';
 import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -1160,9 +1573,38 @@ import { useCardHeaderStyles_unstable } from '@fluentui/react-card';
 import { useCardPreview_unstable } from '@fluentui/react-card';
 import { useCardPreviewStyles_unstable } from '@fluentui/react-card';
 import { useCardStyles_unstable } from '@fluentui/react-card';
+import { useCarousel_unstable } from '@fluentui/react-carousel';
+import { useCarouselAutoplayButton_unstable } from '@fluentui/react-carousel';
+import { useCarouselAutoplayButtonStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselButton_unstable } from '@fluentui/react-carousel';
+import { useCarouselButtonStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselCard_unstable } from '@fluentui/react-carousel';
+import { useCarouselCardStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselContext_unstable } from '@fluentui/react-carousel';
+import { useCarouselNav_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavButton_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavButtonStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavContainer_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavContainerStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavImageButton_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavImageButtonStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselNavStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselSlider_unstable } from '@fluentui/react-carousel';
+import { useCarouselSliderStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselStyles_unstable } from '@fluentui/react-carousel';
+import { useCarouselViewport_unstable } from '@fluentui/react-carousel';
+import { useCarouselViewportStyles_unstable } from '@fluentui/react-carousel';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useColorArea_unstable } from '@fluentui/react-color-picker';
+import { useColorAreaStyles_unstable } from '@fluentui/react-color-picker';
+import { useColorPicker_unstable } from '@fluentui/react-color-picker';
+import { useColorPickerStyles_unstable } from '@fluentui/react-color-picker';
+import { useColorSlider_unstable } from '@fluentui/react-color-picker';
+import { useColorSliderStyles_unstable } from '@fluentui/react-color-picker';
+import { useColorSwatch_unstable } from '@fluentui/react-swatch-picker';
+import { useColorSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
@@ -1208,6 +1650,8 @@ import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDrawer_unstable } from '@fluentui/react-drawer';
 import { useDrawerBody_unstable } from '@fluentui/react-drawer';
 import { useDrawerBodyStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerContext_unstable } from '@fluentui/react-drawer';
+import { useDrawerContextValue } from '@fluentui/react-drawer';
 import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
 import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
@@ -1219,6 +1663,8 @@ import { useDrawerHeaderTitleStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerStyles_unstable } from '@fluentui/react-drawer';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useEmptySwatch_unstable } from '@fluentui/react-swatch-picker';
+import { useEmptySwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldContext_unstable } from '@fluentui/react-field';
@@ -1239,10 +1685,16 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFocusObserved } from '@fluentui/react-tabster';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
+import { useHamburger_unstable } from '@fluentui/react-nav';
+import { useHamburgerStyles_unstable } from '@fluentui/react-nav';
 import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useImageSwatch_unstable } from '@fluentui/react-swatch-picker';
+import { useImageSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
+import { useInfoButton_unstable } from '@fluentui/react-infolabel';
+import { useInfoButtonStyles_unstable } from '@fluentui/react-infolabel';
 import { useInfoLabel_unstable } from '@fluentui/react-infolabel';
 import { useInfoLabelStyles_unstable } from '@fluentui/react-infolabel';
 import { useInlineDrawer_unstable } from '@fluentui/react-drawer';
@@ -1267,9 +1719,14 @@ import { useLabelStyles_unstable } from '@fluentui/react-label';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
+import { useList_unstable } from '@fluentui/react-list';
 import { useListbox_unstable } from '@fluentui/react-combobox';
+import { useListboxContext_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
+import { useListItem_unstable } from '@fluentui/react-list';
+import { useListItemStyles_unstable } from '@fluentui/react-list';
+import { useListStyles_unstable } from '@fluentui/react-list';
 import { useMenu_unstable } from '@fluentui/react-menu';
 import { useMenuButton_unstable } from '@fluentui/react-button';
 import { useMenuButtonStyles_unstable } from '@fluentui/react-button';
@@ -1291,6 +1748,8 @@ import { useMenuItemLinkStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadio_unstable } from '@fluentui/react-menu';
 import { useMenuItemRadioStyles_unstable } from '@fluentui/react-menu';
 import { useMenuItemStyles_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitch_unstable } from '@fluentui/react-menu';
+import { useMenuItemSwitchStyles_unstable } from '@fluentui/react-menu';
 import { useMenuList_unstable } from '@fluentui/react-menu';
 import { useMenuListContext_unstable } from '@fluentui/react-menu';
 import { useMenuListContextValues_unstable } from '@fluentui/react-menu';
@@ -1304,10 +1763,12 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useMessageBar_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarActions_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarActionsContextValue_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarActionsStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarBody_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarBodyStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarContext } from '@fluentui/react-message-bar';
+import { useMessageBarContextValue_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarGroup_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarGroupStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarStyles_unstable } from '@fluentui/react-message-bar';
@@ -1315,6 +1776,35 @@ import { useMessageBarTitle_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarTitleStyles_unstable } from '@fluentui/react-message-bar';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
+import { useNav_unstable } from '@fluentui/react-nav';
+import { useNavCategory_unstable } from '@fluentui/react-nav';
+import { useNavCategoryContext_unstable } from '@fluentui/react-nav';
+import { useNavCategoryContextValues_unstable } from '@fluentui/react-nav';
+import { useNavCategoryItem_unstable } from '@fluentui/react-nav';
+import { useNavCategoryItemContext_unstable } from '@fluentui/react-nav';
+import { useNavCategoryItemContextValues_unstable } from '@fluentui/react-nav';
+import { useNavCategoryItemStyles_unstable } from '@fluentui/react-nav';
+import { useNavContext_unstable } from '@fluentui/react-nav';
+import { useNavContextValues_unstable } from '@fluentui/react-nav';
+import { useNavDivider_unstable } from '@fluentui/react-nav';
+import { useNavDividerStyles_unstable } from '@fluentui/react-nav';
+import { useNavDrawer_unstable } from '@fluentui/react-nav';
+import { useNavDrawerBody_unstable } from '@fluentui/react-nav';
+import { useNavDrawerBodyStyles_unstable } from '@fluentui/react-nav';
+import { useNavDrawerFooter_unstable } from '@fluentui/react-nav';
+import { useNavDrawerFooterStyles_unstable } from '@fluentui/react-nav';
+import { useNavDrawerHeader_unstable } from '@fluentui/react-nav';
+import { useNavDrawerHeaderStyles_unstable } from '@fluentui/react-nav';
+import { useNavDrawerStyles_unstable } from '@fluentui/react-nav';
+import { useNavItem_unstable } from '@fluentui/react-nav';
+import { useNavItemStyles_unstable } from '@fluentui/react-nav';
+import { useNavSectionHeader_unstable } from '@fluentui/react-nav';
+import { useNavSectionHeaderStyles_unstable } from '@fluentui/react-nav';
+import { useNavStyles_unstable } from '@fluentui/react-nav';
+import { useNavSubItem_unstable } from '@fluentui/react-nav';
+import { useNavSubItemGroup_unstable } from '@fluentui/react-nav';
+import { useNavSubItemGroupStyles_unstable } from '@fluentui/react-nav';
+import { useNavSubItemStyles_unstable } from '@fluentui/react-nav';
 import { useObservedElement } from '@fluentui/react-tabster';
 import { useOption_unstable } from '@fluentui/react-combobox';
 import { useOptionGroup_unstable } from '@fluentui/react-combobox';
@@ -1376,7 +1866,15 @@ import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
+import { useSplitNavItem_unstable } from '@fluentui/react-nav';
+import { useSplitNavItemStyles_unstable } from '@fluentui/react-nav';
 import { useSubtreeContext_unstable } from '@fluentui/react-tree';
+import { useSwatchPicker_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerContextValue_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerContextValues } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerRow_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerRowStyles_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
@@ -1418,12 +1916,54 @@ import { useTagAvatarContextValues_unstable } from '@fluentui/react-tags';
 import { useTagGroup_unstable } from '@fluentui/react-tags';
 import { useTagGroupContextValues_unstable } from '@fluentui/react-tags';
 import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
+import { useTagPicker_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerButton_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerButtonStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerContext_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerControl_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerControlStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerFilter } from '@fluentui/react-tag-picker';
+import { useTagPickerGroup_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerGroupStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerInput_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerInputStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerList_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerListStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerOption_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerOptionGroup } from '@fluentui/react-tag-picker';
+import { useTagPickerOptionGroupStyles } from '@fluentui/react-tag-picker';
+import { useTagPickerOptionStyles_unstable } from '@fluentui/react-tag-picker';
 import { useTagStyles_unstable } from '@fluentui/react-tags';
+import { useTeachingPopover_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverBody_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverBodyStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarousel_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselCard_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselCardStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselContextValues_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselFooter_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselFooterStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselNav_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselNavButton_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselNavButtonStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselNavStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselPageCount_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselPageCountStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverCarouselStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverFooter_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverHeader_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverHeaderStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverSurface_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverSurfaceStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverTitle_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverTitleStyles_unstable } from '@fluentui/react-teaching-popover';
+import { useTeachingPopoverTrigger_unstable } from '@fluentui/react-teaching-popover';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
+import { useTimeout } from '@fluentui/react-utilities';
 import { useToast_unstable } from '@fluentui/react-toast';
 import { useToastBody_unstable } from '@fluentui/react-toast';
 import { useToastBodyStyles_unstable } from '@fluentui/react-toast';
@@ -1549,9 +2089,39 @@ export { AccordionToggleEvent }
 
 export { AccordionToggleEventHandler }
 
+export { AlphaSlider }
+
+export { alphaSliderClassNames }
+
+export { AlphaSliderProps }
+
+export { AlphaSliderSlots }
+
+export { AlphaSliderState }
+
 export { AnnounceContextValue }
 
 export { AnnounceProvider }
+
+export { AppItem }
+
+export { appItemClassNames }
+
+export { AppItemProps }
+
+export { AppItemSlots }
+
+export { AppItemState }
+
+export { AppItemStatic }
+
+export { appItemStaticClassNames }
+
+export { AppItemStaticProps }
+
+export { AppItemStaticSlots }
+
+export { AppItemStaticState }
 
 export { AriaLiveAnnouncer }
 
@@ -1562,6 +2132,10 @@ export { AriaLiveAnnouncerState }
 export { arrowHeights }
 
 export { assertSlots }
+
+export { AtomMotion }
+
+export { AtomMotionFn }
 
 export { Avatar }
 
@@ -1763,6 +2337,120 @@ export { CardSlots }
 
 export { CardState }
 
+export { Carousel }
+
+export { CarouselAnnouncerFunction }
+
+export { CarouselAutoplayButton }
+
+export { carouselAutoplayButtonClassNames }
+
+export { CarouselAutoplayButtonProps }
+
+export { CarouselAutoplayButtonSlots }
+
+export { CarouselAutoplayButtonState }
+
+export { CarouselButton }
+
+export { carouselButtonClassNames }
+
+export { CarouselButtonProps }
+
+export { CarouselButtonSlots }
+
+export { CarouselButtonState }
+
+export { CarouselCard }
+
+export { carouselCardClassNames }
+
+export { CarouselCardProps }
+
+export { CarouselCardSlots }
+
+export { CarouselCardState }
+
+export { carouselClassNames }
+
+export { carouselContextDefaultValue }
+
+export { CarouselContextValue }
+
+export { CarouselContextValues }
+
+export { CarouselIndexChangeData }
+
+export { CarouselNav }
+
+export { CarouselNavButton }
+
+export { carouselNavButtonClassNames }
+
+export { CarouselNavButtonProps }
+
+export { CarouselNavButtonSlots }
+
+export { CarouselNavButtonState }
+
+export { carouselNavClassNames }
+
+export { CarouselNavContainer }
+
+export { carouselNavContainerClassNames }
+
+export { CarouselNavContainerProps }
+
+export { CarouselNavContainerSlots }
+
+export { CarouselNavContainerState }
+
+export { CarouselNavImageButton }
+
+export { carouselNavImageButtonClassNames }
+
+export { CarouselNavImageButtonProps }
+
+export { CarouselNavImageButtonSlots }
+
+export { CarouselNavImageButtonState }
+
+export { CarouselNavProps }
+
+export { CarouselNavSlots }
+
+export { CarouselNavState }
+
+export { CarouselProps }
+
+export { CarouselProvider }
+
+export { CarouselSlider }
+
+export { carouselSliderClassNames }
+
+export { CarouselSliderProps }
+
+export { CarouselSliderSlots }
+
+export { CarouselSliderState }
+
+export { CarouselSlots }
+
+export { CarouselState }
+
+export { CarouselViewport }
+
+export { carouselViewportClassNames }
+
+export { CarouselViewportProps }
+
+export { CarouselViewportSlots }
+
+export { CarouselViewportState }
+
+export { CellRenderFunction }
+
 export { Checkbox }
 
 export { checkboxClassNames }
@@ -1775,7 +2463,47 @@ export { CheckboxSlots }
 
 export { CheckboxState }
 
+export { ColorArea }
+
+export { colorAreaClassNames }
+
+export { ColorAreaProps }
+
+export { ColorAreaSlots }
+
+export { ColorAreaState }
+
 export { ColorPaletteTokens }
+
+export { ColorPicker }
+
+export { colorPickerClassNames }
+
+export { ColorPickerProps }
+
+export { ColorPickerSlots }
+
+export { ColorPickerState }
+
+export { ColorSlider }
+
+export { colorSliderClassNames }
+
+export { ColorSliderProps }
+
+export { ColorSliderSlots }
+
+export { ColorSliderState }
+
+export { ColorSwatch }
+
+export { colorSwatchClassNames }
+
+export { ColorSwatchProps }
+
+export { ColorSwatchSlots }
+
+export { ColorSwatchState }
 
 export { ColorTokens }
 
@@ -1840,6 +2568,12 @@ export { CreateFocusOutlineStyleOptions }
 export { createHighContrastTheme }
 
 export { createLightTheme }
+
+export { createMotionComponent }
+
+export { createPresenceComponent }
+
+export { createPresenceComponentVariant }
 
 export { createTableColumn }
 
@@ -1973,11 +2707,15 @@ export { DialogContentState }
 
 export { DialogContextValue }
 
+export { DialogModalType }
+
 export { DialogOpenChangeData }
 
 export { DialogOpenChangeEvent }
 
 export { DialogProps }
+
+export { DialogProvider }
 
 export { DialogSlots }
 
@@ -2043,6 +2781,8 @@ export { DrawerBodySlots }
 
 export { DrawerBodyState }
 
+export { DrawerContextValue }
+
 export { DrawerFooter }
 
 export { drawerFooterClassNames }
@@ -2085,6 +2825,8 @@ export { DrawerHeaderTitleState }
 
 export { DrawerProps }
 
+export { DrawerProvider }
+
 export { DrawerSlots }
 
 export { DrawerState }
@@ -2106,6 +2848,16 @@ export { DropdownSlots }
 export { DropdownState }
 
 export { DurationTokens }
+
+export { EmptySwatch }
+
+export { emptySwatchClassNames }
+
+export { EmptySwatchProps }
+
+export { EmptySwatchSlots }
+
+export { EmptySwatchState }
 
 export { Field }
 
@@ -2173,6 +2925,8 @@ export { getNativeElementProps }
 
 export { getPartitionedNativeProps }
 
+export { getSlotClassNameProp_unstable }
+
 export { getSlots }
 
 export { GriffelRenderer }
@@ -2180,6 +2934,14 @@ export { GriffelRenderer }
 export { GriffelResetStyle }
 
 export { GriffelStyle }
+
+export { Hamburger }
+
+export { hamburgerClassNames }
+
+export { HamburgerProps }
+
+export { HamburgerState }
 
 export { HeadlessFlatTree }
 
@@ -2202,6 +2964,26 @@ export { ImageProps }
 export { ImageSlots }
 
 export { ImageState }
+
+export { ImageSwatch }
+
+export { imageSwatchClassNames }
+
+export { ImageSwatchProps }
+
+export { ImageSwatchSlots }
+
+export { ImageSwatchState }
+
+export { InfoButton }
+
+export { infoButtonClassNames }
+
+export { InfoButtonProps }
+
+export { InfoButtonSlots }
+
+export { InfoButtonState }
 
 export { InfoLabel }
 
@@ -2267,6 +3049,8 @@ export { InteractionTagSlots }
 
 export { InteractionTagState }
 
+export { isHTMLElement }
+
 export { isTruncatableBreadcrumbContent }
 
 export { Label }
@@ -2295,6 +3079,8 @@ export { LinkSlots }
 
 export { LinkState }
 
+export { List }
+
 export { Listbox }
 
 export { listboxClassNames }
@@ -2310,6 +3096,24 @@ export { ListboxProvider }
 export { ListboxSlots }
 
 export { ListboxState }
+
+export { listClassNames }
+
+export { ListItem }
+
+export { listItemClassNames }
+
+export { ListItemProps }
+
+export { ListItemSlots }
+
+export { ListItemState }
+
+export { ListProps }
+
+export { ListSlots }
+
+export { ListState }
 
 export { makeResetStyles }
 
@@ -2413,6 +3217,10 @@ export { MenuItemSlots }
 
 export { MenuItemState }
 
+export { MenuItemSwitch }
+
+export { menuItemSwitchClassNames }
+
 export { MenuList }
 
 export { menuListClassNames }
@@ -2483,6 +3291,8 @@ export { MessageBarActions }
 
 export { messageBarActionsClassNames }
 
+export { MessageBarActionsContextValues }
+
 export { MessageBarActionsProps }
 
 export { MessageBarActionsSlots }
@@ -2504,6 +3314,8 @@ export { messageBarClassNames }
 export { MessageBarContextProvider }
 
 export { MessageBarContextValue }
+
+export { MessageBarContextValues }
 
 export { MessageBarGroup }
 
@@ -2532,6 +3344,152 @@ export { MessageBarTitleProps }
 export { MessageBarTitleSlots }
 
 export { MessageBarTitleState }
+
+export { MessageBarTransitionContextValue }
+
+export { MotionComponentProps }
+
+export { MotionImperativeRef }
+
+export { motionTokens }
+
+export { Nav }
+
+export { NavButtonRenderFunction }
+
+export { NavCategory }
+
+export { NavCategoryContextValues }
+
+export { NavCategoryItem }
+
+export { navCategoryItemClassNames }
+
+export { NavCategoryItemContextValues }
+
+export { NavCategoryItemProps }
+
+export { NavCategoryItemProvider }
+
+export { NavCategoryItemSlots }
+
+export { NavCategoryItemState }
+
+export { NavCategoryProps }
+
+export { NavCategoryProvider }
+
+export { NavCategoryState }
+
+export { navClassNames }
+
+export { NavContextValue }
+
+export { NavContextValues }
+
+export { NavDensity }
+
+export { NavDivider }
+
+export { navDividerClassNames }
+
+export { NavDividerProps }
+
+export { NavDividerState }
+
+export { NavDrawer }
+
+export { NavDrawerBody }
+
+export { navDrawerBodyClassNames }
+
+export { NavDrawerBodyProps }
+
+export { NavDrawerBodySlots }
+
+export { NavDrawerBodyState }
+
+export { navDrawerClassNames }
+
+export { NavDrawerFooter }
+
+export { navDrawerFooterClassNames }
+
+export { NavDrawerFooterProps }
+
+export { NavDrawerFooterSlots }
+
+export { NavDrawerFooterState }
+
+export { NavDrawerHeader }
+
+export { navDrawerHeaderClassNames }
+
+export { NavDrawerHeaderProps }
+
+export { NavDrawerHeaderSlots }
+
+export { NavDrawerHeaderState }
+
+export { NavDrawerProps }
+
+export { NavDrawerSlots }
+
+export { NavDrawerState }
+
+export { NavItem }
+
+export { navItemClassNames }
+
+export { NavItemProps }
+
+export { NavItemRegisterData }
+
+export { NavItemSlots }
+
+export { NavItemState }
+
+export { NavItemValue }
+
+export { NavProps }
+
+export { NavProvider }
+
+export { NavSectionHeader }
+
+export { navSectionHeaderClassNames }
+
+export { NavSectionHeaderProps }
+
+export { NavSectionHeaderSlots }
+
+export { NavSectionHeaderState }
+
+export { NavSlots }
+
+export { NavState }
+
+export { NavSubItem }
+
+export { navSubItemClassNames }
+
+export { NavSubItemGroup }
+
+export { navSubItemGroupClassNames }
+
+export { NavSubItemGroupProps }
+
+export { NavSubItemGroupSlots }
+
+export { NavSubItemGroupState }
+
+export { NavSubItemProps }
+
+export { NavSubItemSlots }
+
+export { NavSubItemState }
+
+export { OnNavItemSelectData }
 
 export { OnOpenChangeData }
 
@@ -2647,9 +3605,19 @@ export { PortalProps }
 
 export { PortalState }
 
+export { PositioningBoundary }
+
+export { PositioningConfigurationFn }
+
+export { PositioningConfigurationFnOptions }
+
+export { PositioningConfigurationProvider }
+
 export { PositioningImperativeRef }
 
 export { PositioningProps }
+
+export { PositioningRect }
 
 export { PositioningShorthand }
 
@@ -2679,9 +3647,17 @@ export { presenceBlockedRegular }
 
 export { presenceBusyFilled }
 
+export { PresenceComponentProps }
+
 export { presenceDndFilled }
 
 export { presenceDndRegular }
+
+export { PresenceGroup }
+
+export { PresenceMotion }
+
+export { PresenceMotionFn }
 
 export { presenceOfflineRegular }
 
@@ -2767,6 +3743,8 @@ export { RatingSlots }
 
 export { RatingState }
 
+export { RegisterNavItemEventHandler }
+
 export { RegisterTabEventHandler }
 
 export { renderAccordion_unstable }
@@ -2776,6 +3754,12 @@ export { renderAccordionHeader_unstable }
 export { renderAccordionItem_unstable }
 
 export { renderAccordionPanel_unstable }
+
+export { renderAlphaSlider_unstable }
+
+export { renderAppItem_unstable }
+
+export { renderAppItemStatic_unstable }
 
 export { renderAriaLiveAnnouncer_unstable }
 
@@ -2807,7 +3791,35 @@ export { renderCardHeader_unstable }
 
 export { renderCardPreview_unstable }
 
+export { renderCarousel_unstable }
+
+export { renderCarouselAutoplayButton_unstable }
+
+export { renderCarouselButton_unstable }
+
+export { renderCarouselCard_unstable }
+
+export { renderCarouselNav_unstable }
+
+export { renderCarouselNavButton_unstable }
+
+export { renderCarouselNavContainer_unstable }
+
+export { renderCarouselNavImageButton_unstable }
+
+export { renderCarouselSlider_unstable }
+
+export { renderCarouselViewport_unstable }
+
 export { renderCheckbox_unstable }
+
+export { renderColorArea_unstable }
+
+export { renderColorPicker_unstable }
+
+export { renderColorSlider_unstable }
+
+export { renderColorSwatch_unstable }
 
 export { renderCombobox_unstable }
 
@@ -2857,6 +3869,8 @@ export { renderDrawerHeaderTitle_unstable }
 
 export { renderDropdown_unstable }
 
+export { renderEmptySwatch_unstable }
+
 export { RendererProvider }
 
 export { renderField_unstable }
@@ -2866,6 +3880,10 @@ export { renderFlatTree_unstable }
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
+
+export { renderImageSwatch_unstable }
+
+export { renderInfoButton_unstable }
 
 export { renderInfoLabel_unstable }
 
@@ -2883,7 +3901,11 @@ export { renderLabel_unstable }
 
 export { renderLink_unstable }
 
+export { renderList_unstable }
+
 export { renderListbox_unstable }
+
+export { renderListItem_unstable }
 
 export { renderMenu_unstable }
 
@@ -2903,6 +3925,8 @@ export { renderMenuItemLink_unstable }
 
 export { renderMenuItemRadio_unstable }
 
+export { renderMenuItemSwitch_unstable }
+
 export { renderMenuList_unstable }
 
 export { renderMenuPopover_unstable }
@@ -2920,6 +3944,22 @@ export { renderMessageBarBody_unstable }
 export { renderMessageBarGroup_unstable }
 
 export { renderMessageBarTitle_unstable }
+
+export { renderNav_unstable }
+
+export { renderNavCategory_unstable }
+
+export { renderNavCategoryItem_unstable }
+
+export { renderNavDrawer_unstable }
+
+export { renderNavItem_unstable }
+
+export { renderNavSectionHeader_unstable }
+
+export { renderNavSubItem_unstable }
+
+export { renderNavSubItemGroup_unstable }
 
 export { renderOption_unstable }
 
@@ -2965,6 +4005,14 @@ export { renderSpinner_unstable }
 
 export { renderSplitButton_unstable }
 
+export { renderSplitNavItem_unstable }
+
+export { renderSwatchPicker_unstable }
+
+export { renderSwatchPickerGrid }
+
+export { renderSwatchPickerRow_unstable }
+
 export { renderSwitch_unstable }
 
 export { renderTab_unstable }
@@ -2994,6 +4042,48 @@ export { renderTabList_unstable }
 export { renderTag_unstable }
 
 export { renderTagGroup_unstable }
+
+export { renderTagPicker_unstable }
+
+export { renderTagPickerButton_unstable }
+
+export { renderTagPickerControl_unstable }
+
+export { renderTagPickerGroup_unstable }
+
+export { renderTagPickerInput_unstable }
+
+export { renderTagPickerList_unstable }
+
+export { renderTagPickerOption_unstable }
+
+export { renderTagPickerOptionGroup }
+
+export { renderTeachingPopover_unstable }
+
+export { renderTeachingPopoverBody_unstable }
+
+export { renderTeachingPopoverCarousel_unstable }
+
+export { renderTeachingPopoverCarouselCard_unstable }
+
+export { renderTeachingPopoverCarouselFooter_unstable }
+
+export { renderTeachingPopoverCarouselNav_unstable }
+
+export { renderTeachingPopoverCarouselNavButton_unstable }
+
+export { renderTeachingPopoverCarouselPageCount_unstable }
+
+export { renderTeachingPopoverFooter_unstable }
+
+export { renderTeachingPopoverHeader_unstable }
+
+export { renderTeachingPopoverSurface_unstable }
+
+export { renderTeachingPopoverTitle_unstable }
+
+export { renderTeachingPopoverTrigger_unstable }
 
 export { renderText_unstable }
 
@@ -3181,6 +4271,16 @@ export { SplitButtonSlots }
 
 export { SplitButtonState }
 
+export { SplitNavItem }
+
+export { splitNavItemClassNames }
+
+export { SplitNavItemProps }
+
+export { SplitNavItemSlots }
+
+export { SplitNavItemState }
+
 export { SSRProvider }
 
 export { StrokeWidthTokens }
@@ -3198,6 +4298,44 @@ export { Subtitle2Stronger }
 export { subtitle2StrongerClassNames }
 
 export { SubtreeContextValue }
+
+export { swatchCSSVars }
+
+export { SwatchPicker }
+
+export { swatchPickerClassNames }
+
+export { swatchPickerContextDefaultValue }
+
+export { SwatchPickerContextValue }
+
+export { SwatchPickerContextValues }
+
+export { SwatchPickerGridProps }
+
+export { SwatchPickerOnSelectEventHandler }
+
+export { SwatchPickerOnSelectionChangeData }
+
+export { SwatchPickerProps }
+
+export { SwatchPickerProvider }
+
+export { SwatchPickerRow }
+
+export { swatchPickerRowClassNames }
+
+export { SwatchPickerRowProps }
+
+export { SwatchPickerRowSlots }
+
+export { SwatchPickerRowState }
+
+export { SwatchPickerSlots }
+
+export { SwatchPickerState }
+
+export { SwatchProps }
 
 export { Switch }
 
@@ -3397,6 +4535,94 @@ export { TagGroupSlots }
 
 export { TagGroupState }
 
+export { TagPicker }
+
+export { TagPickerButton }
+
+export { tagPickerButtonClassNames }
+
+export { TagPickerButtonProps }
+
+export { TagPickerButtonSlots }
+
+export { TagPickerButtonState }
+
+export { TagPickerContextValue }
+
+export { TagPickerContextValues }
+
+export { TagPickerControl }
+
+export { tagPickerControlClassNames }
+
+export { TagPickerControlProps }
+
+export { TagPickerControlSlots }
+
+export { TagPickerControlState }
+
+export { TagPickerGroup }
+
+export { tagPickerGroupClassNames }
+
+export { TagPickerGroupProps }
+
+export { TagPickerGroupSlots }
+
+export { TagPickerGroupState }
+
+export { TagPickerInput }
+
+export { tagPickerInputClassNames }
+
+export { TagPickerInputProps }
+
+export { TagPickerInputSlots }
+
+export { TagPickerInputState }
+
+export { TagPickerList }
+
+export { tagPickerListClassNames }
+
+export { TagPickerListProps }
+
+export { TagPickerListSlots }
+
+export { TagPickerListState }
+
+export { TagPickerOnOpenChangeData }
+
+export { TagPickerOnOptionSelectData }
+
+export { TagPickerOption }
+
+export { tagPickerOptionClassNames }
+
+export { TagPickerOptionGroup }
+
+export { tagPickerOptionGroupClassNames }
+
+export { TagPickerOptionGroupProps }
+
+export { TagPickerOptionGroupSlots }
+
+export { TagPickerOptionGroupState }
+
+export { TagPickerOptionProps }
+
+export { TagPickerOptionSlots }
+
+export { TagPickerOptionState }
+
+export { TagPickerProps }
+
+export { TagPickerSize }
+
+export { TagPickerSlots }
+
+export { TagPickerState }
+
 export { TagProps }
 
 export { TagShape }
@@ -3408,6 +4634,130 @@ export { TagSlots }
 export { TagState }
 
 export { TagValue }
+
+export { TeachingPopover }
+
+export { TeachingPopoverBody }
+
+export { teachingPopoverBodyClassNames }
+
+export { TeachingPopoverBodyProps }
+
+export { TeachingPopoverBodySlots }
+
+export { TeachingPopoverBodyState }
+
+export { TeachingPopoverCarousel }
+
+export { TeachingPopoverCarouselCard }
+
+export { teachingPopoverCarouselCardClassNames }
+
+export { TeachingPopoverCarouselCardProps }
+
+export { TeachingPopoverCarouselCardSlots }
+
+export { TeachingPopoverCarouselCardState }
+
+export { teachingPopoverCarouselClassNames }
+
+export { TeachingPopoverCarouselFooter }
+
+export { teachingPopoverCarouselFooterClassNames }
+
+export { TeachingPopoverCarouselFooterProps }
+
+export { TeachingPopoverCarouselFooterSlots }
+
+export { TeachingPopoverCarouselFooterState }
+
+export { TeachingPopoverCarouselNav }
+
+export { TeachingPopoverCarouselNavButton }
+
+export { teachingPopoverCarouselNavButtonClassNames }
+
+export { TeachingPopoverCarouselNavButtonProps }
+
+export { TeachingPopoverCarouselNavButtonSlots }
+
+export { TeachingPopoverCarouselNavButtonState }
+
+export { teachingPopoverCarouselNavClassNames }
+
+export { TeachingPopoverCarouselNavProps }
+
+export { TeachingPopoverCarouselNavSlots }
+
+export { TeachingPopoverCarouselNavState }
+
+export { TeachingPopoverCarouselPageCount }
+
+export { teachingPopoverCarouselPageCountClassNames }
+
+export { TeachingPopoverCarouselPageCountProps }
+
+export { TeachingPopoverCarouselPageCountRenderFunction }
+
+export { TeachingPopoverCarouselPageCountSlots }
+
+export { TeachingPopoverCarouselPageCountState }
+
+export { TeachingPopoverCarouselProps }
+
+export { TeachingPopoverCarouselSlots }
+
+export { TeachingPopoverCarouselState }
+
+export { TeachingPopoverFooter }
+
+export { teachingPopoverFooterClassNames }
+
+export { TeachingPopoverFooterProps }
+
+export { TeachingPopoverFooterState }
+
+export { TeachingPopoverHeader }
+
+export { teachingPopoverHeaderClassNames }
+
+export { TeachingPopoverHeaderProps }
+
+export { TeachingPopoverHeaderSlots }
+
+export { TeachingPopoverHeaderState }
+
+export { TeachingPopoverProps }
+
+export { TeachingPopoverState }
+
+export { TeachingPopoverSurface }
+
+export { teachingPopoverSurfaceClassNames }
+
+export { TeachingPopoverSurfaceProps }
+
+export { TeachingPopoverSurfaceSlots }
+
+export { TeachingPopoverSurfaceState }
+
+export { TeachingPopoverTitle }
+
+export { teachingPopoverTitleClassNames }
+
+export { TeachingPopoverTitleProps }
+
+export { TeachingPopoverTitleSlots }
+
+export { TeachingPopoverTitleState }
+
+export { TeachingPopoverTrigger }
+
+export { TeachingPopoverTriggerChildProps }
+
+export { TeachingPopoverTriggerProps }
+
+export { TeachingPopoverTriggerState }
 
 export { teamsDarkTheme }
 
@@ -3665,6 +5015,8 @@ export { TreeProps }
 
 export { TreeProvider }
 
+export { TreeRootReset }
+
 export { TreeSelectionValue }
 
 export { TreeSlots }
@@ -3709,7 +5061,21 @@ export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
 
+export { useAlphaSlider_unstable }
+
+export { useAlphaSliderStyles_unstable }
+
+export { useAnimationFrame }
+
 export { useAnnounce }
+
+export { useAppItem_unstable }
+
+export { useAppItemStatic_unstable }
+
+export { useAppItemStaticStyles_unstable }
+
+export { useAppItemStyles_unstable }
 
 export { useAriaLiveAnnouncer_unstable }
 
@@ -3783,11 +5149,69 @@ export { useCardPreviewStyles_unstable }
 
 export { useCardStyles_unstable }
 
+export { useCarousel_unstable }
+
+export { useCarouselAutoplayButton_unstable }
+
+export { useCarouselAutoplayButtonStyles_unstable }
+
+export { useCarouselButton_unstable }
+
+export { useCarouselButtonStyles_unstable }
+
+export { useCarouselCard_unstable }
+
+export { useCarouselCardStyles_unstable }
+
+export { useCarouselContext_unstable }
+
+export { useCarouselNav_unstable }
+
+export { useCarouselNavButton_unstable }
+
+export { useCarouselNavButtonStyles_unstable }
+
+export { useCarouselNavContainer_unstable }
+
+export { useCarouselNavContainerStyles_unstable }
+
+export { useCarouselNavImageButton_unstable }
+
+export { useCarouselNavImageButtonStyles_unstable }
+
+export { useCarouselNavStyles_unstable }
+
+export { useCarouselSlider_unstable }
+
+export { useCarouselSliderStyles_unstable }
+
+export { useCarouselStyles_unstable }
+
+export { useCarouselViewport_unstable }
+
+export { useCarouselViewportStyles_unstable }
+
 export { useCheckbox_unstable }
 
 export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
+
+export { useColorArea_unstable }
+
+export { useColorAreaStyles_unstable }
+
+export { useColorPicker_unstable }
+
+export { useColorPickerStyles_unstable }
+
+export { useColorSlider_unstable }
+
+export { useColorSliderStyles_unstable }
+
+export { useColorSwatch_unstable }
+
+export { useColorSwatchStyles_unstable }
 
 export { useColumnIdContext }
 
@@ -3879,6 +5303,10 @@ export { useDrawerBody_unstable }
 
 export { useDrawerBodyStyles_unstable }
 
+export { useDrawerContext_unstable }
+
+export { useDrawerContextValue }
+
 export { useDrawerFooter_unstable }
 
 export { useDrawerFooterStyles_unstable }
@@ -3900,6 +5328,10 @@ export { useDrawerStyles_unstable }
 export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
+
+export { useEmptySwatch_unstable }
+
+export { useEmptySwatchStyles_unstable }
 
 export { useEventCallback }
 
@@ -3941,6 +5373,10 @@ export { useFocusVisible }
 
 export { useFocusWithin }
 
+export { useHamburger_unstable }
+
+export { useHamburgerStyles_unstable }
+
 export { useHeadlessFlatTree_unstable }
 
 export { useId }
@@ -3948,6 +5384,14 @@ export { useId }
 export { useImage_unstable }
 
 export { useImageStyles_unstable }
+
+export { useImageSwatch_unstable }
+
+export { useImageSwatchStyles_unstable }
+
+export { useInfoButton_unstable }
+
+export { useInfoButtonStyles_unstable }
 
 export { useInfoLabel_unstable }
 
@@ -3997,11 +5441,21 @@ export { useLinkState_unstable }
 
 export { useLinkStyles_unstable }
 
+export { useList_unstable }
+
 export { useListbox_unstable }
+
+export { useListboxContext_unstable }
 
 export { useListboxContextValues }
 
 export { useListboxStyles_unstable }
+
+export { useListItem_unstable }
+
+export { useListItemStyles_unstable }
+
+export { useListStyles_unstable }
 
 export { useMenu_unstable }
 
@@ -4045,6 +5499,10 @@ export { useMenuItemRadioStyles_unstable }
 
 export { useMenuItemStyles_unstable }
 
+export { useMenuItemSwitch_unstable }
+
+export { useMenuItemSwitchStyles_unstable }
+
 export { useMenuList_unstable }
 
 export { useMenuListContext_unstable }
@@ -4071,6 +5529,8 @@ export { useMessageBar_unstable }
 
 export { useMessageBarActions_unstable }
 
+export { useMessageBarActionsContextValue_unstable }
+
 export { useMessageBarActionsStyles_unstable }
 
 export { useMessageBarBody_unstable }
@@ -4078,6 +5538,8 @@ export { useMessageBarBody_unstable }
 export { useMessageBarBodyStyles_unstable }
 
 export { useMessageBarContext }
+
+export { useMessageBarContextValue_unstable }
 
 export { useMessageBarGroup_unstable }
 
@@ -4092,6 +5554,64 @@ export { useMessageBarTitleStyles_unstable }
 export { useModalAttributes }
 
 export { UseModalAttributesOptions }
+
+export { useNav_unstable }
+
+export { useNavCategory_unstable }
+
+export { useNavCategoryContext_unstable }
+
+export { useNavCategoryContextValues_unstable }
+
+export { useNavCategoryItem_unstable }
+
+export { useNavCategoryItemContext_unstable }
+
+export { useNavCategoryItemContextValues_unstable }
+
+export { useNavCategoryItemStyles_unstable }
+
+export { useNavContext_unstable }
+
+export { useNavContextValues_unstable }
+
+export { useNavDivider_unstable }
+
+export { useNavDividerStyles_unstable }
+
+export { useNavDrawer_unstable }
+
+export { useNavDrawerBody_unstable }
+
+export { useNavDrawerBodyStyles_unstable }
+
+export { useNavDrawerFooter_unstable }
+
+export { useNavDrawerFooterStyles_unstable }
+
+export { useNavDrawerHeader_unstable }
+
+export { useNavDrawerHeaderStyles_unstable }
+
+export { useNavDrawerStyles_unstable }
+
+export { useNavItem_unstable }
+
+export { useNavItemStyles_unstable }
+
+export { useNavSectionHeader_unstable }
+
+export { useNavSectionHeaderStyles_unstable }
+
+export { useNavStyles_unstable }
+
+export { useNavSubItem_unstable }
+
+export { useNavSubItemGroup_unstable }
+
+export { useNavSubItemGroupStyles_unstable }
+
+export { useNavSubItemStyles_unstable }
 
 export { useObservedElement }
 
@@ -4215,7 +5735,23 @@ export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
 
+export { useSplitNavItem_unstable }
+
+export { useSplitNavItemStyles_unstable }
+
 export { useSubtreeContext_unstable }
+
+export { useSwatchPicker_unstable }
+
+export { useSwatchPickerContextValue_unstable }
+
+export { useSwatchPickerContextValues }
+
+export { useSwatchPickerRow_unstable }
+
+export { useSwatchPickerRowStyles_unstable }
+
+export { useSwatchPickerStyles_unstable }
 
 export { useSwitch_unstable }
 
@@ -4299,7 +5835,89 @@ export { useTagGroupContextValues_unstable }
 
 export { useTagGroupStyles_unstable }
 
+export { useTagPicker_unstable }
+
+export { useTagPickerButton_unstable }
+
+export { useTagPickerButtonStyles_unstable }
+
+export { useTagPickerContext_unstable }
+
+export { useTagPickerControl_unstable }
+
+export { useTagPickerControlStyles_unstable }
+
+export { useTagPickerFilter }
+
+export { useTagPickerGroup_unstable }
+
+export { useTagPickerGroupStyles_unstable }
+
+export { useTagPickerInput_unstable }
+
+export { useTagPickerInputStyles_unstable }
+
+export { useTagPickerList_unstable }
+
+export { useTagPickerListStyles_unstable }
+
+export { useTagPickerOption_unstable }
+
+export { useTagPickerOptionGroup }
+
+export { useTagPickerOptionGroupStyles }
+
+export { useTagPickerOptionStyles_unstable }
+
 export { useTagStyles_unstable }
+
+export { useTeachingPopover_unstable }
+
+export { useTeachingPopoverBody_unstable }
+
+export { useTeachingPopoverBodyStyles_unstable }
+
+export { useTeachingPopoverCarousel_unstable }
+
+export { useTeachingPopoverCarouselCard_unstable }
+
+export { useTeachingPopoverCarouselCardStyles_unstable }
+
+export { useTeachingPopoverCarouselContextValues_unstable }
+
+export { useTeachingPopoverCarouselFooter_unstable }
+
+export { useTeachingPopoverCarouselFooterStyles_unstable }
+
+export { useTeachingPopoverCarouselNav_unstable }
+
+export { useTeachingPopoverCarouselNavButton_unstable }
+
+export { useTeachingPopoverCarouselNavButtonStyles_unstable }
+
+export { useTeachingPopoverCarouselNavStyles_unstable }
+
+export { useTeachingPopoverCarouselPageCount_unstable }
+
+export { useTeachingPopoverCarouselPageCountStyles_unstable }
+
+export { useTeachingPopoverCarouselStyles_unstable }
+
+export { useTeachingPopoverFooter_unstable }
+
+export { useTeachingPopoverHeader_unstable }
+
+export { useTeachingPopoverHeaderStyles_unstable }
+
+export { useTeachingPopoverSurface_unstable }
+
+export { useTeachingPopoverSurfaceStyles_unstable }
+
+export { useTeachingPopoverTitle_unstable }
+
+export { useTeachingPopoverTitleStyles_unstable }
+
+export { useTeachingPopoverTrigger_unstable }
 
 export { useText_unstable }
 
@@ -4310,6 +5928,8 @@ export { useTextareaStyles_unstable }
 export { useTextStyles_unstable }
 
 export { useThemeClassName }
+
+export { useTimeout }
 
 export { useToast_unstable }
 

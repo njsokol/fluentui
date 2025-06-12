@@ -44,6 +44,7 @@ import { keyframes } from '@fluentui/merge-styles';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { mergeStyleSets } from '@fluentui/merge-styles';
 import { registerDefaultFontFaces } from '@fluentui/theme';
+import { ShadowConfig } from '@fluentui/merge-styles';
 import { Stylesheet } from '@fluentui/merge-styles';
 
 // @public (undocumented)
@@ -83,7 +84,7 @@ export { DefaultPalette }
 export const EdgeChromiumHighContrastSelector = "@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)";
 
 // @public (undocumented)
-export const FLUENT_CDN_BASE_URL = "https://res.cdn.office.net/files/fabric-cdn-prod_20240129.001";
+export const FLUENT_CDN_BASE_URL = "https://res.cdn.office.net/files/fabric-cdn-prod_20250411.001";
 
 // @public
 export function focusClear(): IRawStyle;
@@ -329,6 +330,8 @@ export const ScreenWidthMinXXXLarge = 1920;
 
 // @public
 export function setIconOptions(options: Partial<IIconOptions>): void;
+
+export { ShadowConfig }
 
 export { Stylesheet }
 

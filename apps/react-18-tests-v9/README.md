@@ -1,8 +1,26 @@
 # @fluentui/react-18-tests-v9
 
-**Tests for React 18 compatability in [Fluent UI React v9](https://react.fluentui.dev)**.
+**Tests for React 18 compatibility in [Fluent UI React v9](https://react.fluentui.dev)**.
 
 ## Usage
+
+### React 18 integration tests against all v9 code in monorepo
+
+Following Targets are used:
+
+#### type-check:integration
+
+`yarn nx run react-18-tests-v9:type-check:integration`
+
+runs `tsc` against all monorepo v9 stories with properly pinned `@types/react@18`
+
+_Note:_ react-migration-v8-v9, react-migration-v0-v9 and any `react-*-compat` are excluded from this check
+
+#### e2e:integration
+
+`yarn nx run react-18-tests-v9:e2e:integration`
+
+runs `cypress` against all monorepo v9 `*.cy.tsx?` with properly pinned `react18` runtime deps
 
 ### `start`
 
@@ -31,11 +49,11 @@ For that purpose we use `tsconfig.react-compat-check.json` as target for `type-c
 **Local machine flow:**
 
 ```sh
-lage build --to @fluentui/react-18-tests-v9
+yarn nx run react-18-tests-v9:build
 
-yarn workspace @fluentui/react-18-tests-v9 type-check
+yarn nx run react-18-tests-v9:type-check
 ```
 
 **CI:**
 
-lage defines `build` targets to be executed prior to `type-check`.
+nx defines `build` targets to be executed prior to `type-check`.

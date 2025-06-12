@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { TagGroup, Tag, InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { withStoryWrightSteps } from '../../utilities';
 
-const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
+const steps = new Steps().snapshot('default').end();
 
 export default {
   title: 'TagGroup Converged',
-  Component: TagGroup,
+  component: TagGroup,
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof TagGroup>;
+} satisfies Meta<typeof TagGroup>;
 
 export const Default = () => (
   <TagGroup>

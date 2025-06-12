@@ -5,8 +5,12 @@ import * as React from 'react';
 import { ShadowRoot } from './utils';
 import { Steps, StoryWright } from 'storywright';
 
+export default {
+  title: 'Shadow DOM',
+};
+
 export const Portal: React.FC = () => (
-  <StoryWright steps={new Steps().click('#toggle-menu').snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+  <StoryWright steps={new Steps().click('#toggle-menu').snapshot('normal').end()}>
     <ShadowRoot>
       <Menu>
         <MenuTrigger disableButtonEnhancement>

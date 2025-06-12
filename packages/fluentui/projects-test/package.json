@@ -16,8 +16,8 @@
   },
   "scripts": {
     "build": "gulp bundle:package:no-umd",
-    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
-    "test": "node -r @fluentui/scripts-babel/register src/index.ts"
+    "test-integration": "node -r @fluentui/scripts-babel/register src/index.ts"
   }
 }

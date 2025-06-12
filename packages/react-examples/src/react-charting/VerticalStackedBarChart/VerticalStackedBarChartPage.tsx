@@ -14,6 +14,9 @@ import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart
 import { VerticalStackedBarChartTooltipExample } from './VerticalStackedBarChart.AxisTooltip.Example';
 import { VerticalStackedBarChartCustomAccessibilityExample } from './VerticalStackedBarChart.CustomAccessibility.Example';
 import { VerticalStackedBarChartDateAxisExample } from './VerticalStackedBarChart.DateAxis.Example';
+import { VerticalStackedBarChartReflowExample } from './VerticalStackedBarChart.Reflow.Example';
+import { VerticalStackedBarChartSecondaryYAxisExample } from './VerticalStackedBarChart.SecondaryYAxis.Example';
+import { VerticalStackedBarChartNegativeExample } from './VerticalStackedBarChart.Negative.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;
@@ -27,6 +30,12 @@ const VerticalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.CustomAccessibility.Example') as string;
 const VerticalBarChartDateAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.DateAxis.Example') as string;
+const VerticalBarChartReflowExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Reflow.Example.tsx') as string;
+const VerticalBarChartSecondaryYAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.SecondaryYAxis.Example.tsx') as string;
+const VerticalBarChartNegativeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Negative.Example.tsx') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -36,6 +45,9 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
         componentName="VerticalBarChartExample"
         exampleCards={
           <div>
+            <ExampleCard title="VerticalStackedBarChart Reflow" code={VerticalBarChartReflowExampleCode}>
+              <VerticalStackedBarChartReflowExample />
+            </ExampleCard>
             <ExampleCard title="VerticalStackedBarChart basic" code={VerticalBarChartBasicExampleCode}>
               <VerticalStackedBarChartBasicExample />
             </ExampleCard>
@@ -56,6 +68,15 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             </ExampleCard>
             <ExampleCard title="VerticalStackedBarChart Date Axis" code={VerticalBarChartDateAxisExampleCode}>
               <VerticalStackedBarChartDateAxisExample />
+            </ExampleCard>
+            <ExampleCard
+              title="VerticalStackedBarChart secondary y-axis"
+              code={VerticalBarChartSecondaryYAxisExampleCode}
+            >
+              <VerticalStackedBarChartSecondaryYAxisExample />
+            </ExampleCard>
+            <ExampleCard title="VerticalStackedBarChart Negative" code={VerticalBarChartNegativeExampleCode}>
+              <VerticalStackedBarChartNegativeExample />
             </ExampleCard>
           </div>
         }

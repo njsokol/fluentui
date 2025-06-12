@@ -28,8 +28,6 @@ variables:
     value: production,externalfacing
 
   # below are variables configurable at queue time, so they cannot appear in yml file
-  # - name: dryRun # set it to true in order to execute publishing in dry run mode - nothing will be published
-  #   value: false
   # - name: publishDocsiteOnly # set it to true to only run Job_build_publish_doc
   #   value: false
   # - name: publishOfficial # set it to true to publish package to npm, and publish docsite for official releases
@@ -60,11 +58,6 @@ extends:
               - template: .devops/templates/tools.yml@self
 
               - script: |
-                  echo "dry run mode enabled!"
-                displayName: dry run mode notification
-                condition: eq(variables.dryRun, true)
-
-              - script: |
                   git config user.name "Fluent UI Build"
                   git config user.email "fluentui-internal@service.microsoft.com"
                   git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
@@ -88,7 +81,7 @@ extends:
                 displayName: build,test,lint northstar packages
                 inputs:
                   script: |
-                    yarn nx run-many --targets=build,test,lint,type-check,test-ssr,verify-packaging --projects='packages/fluentui/*' --parallel $(getconf _NPROCESSORS_ONLN) --nxBail --verbose
+                    yarn nx run-many --targets=build,test,lint,type-check,test-ssr,verify-packaging --projects='packages/fluentui/*' --nxBail
 
               - task: CmdLine@2
                 displayName: '[NPM] Publish to NPM'
@@ -122,11 +115,6 @@ extends:
             steps:
               - template: .devops/templates/tools.yml@self
 
-              - script: |
-                  echo "dry run mode enabled!"
-                displayName: dry run mode notification
-                condition: eq(variables.dryRun, true)
-
               - task: CmdLine@2
                 displayName: Checkout branch for pull
                 condition: and(succeeded(), eq(variables.publishOfficial, true))
@@ -156,17 +144,22 @@ extends:
                 inputs:
                   script: |
                     echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion)
-                    NODE_ENV=production yarn northstar:build:docs
+                    NODE_ENV=production yarn nx run docs:bundle
 
-              - task: AzureUpload@2
+              - task: AzureCLI@2
                 displayName: Upload to Azure
                 inputs:
-                  SourcePath: packages/fluentui/docs/dist
-                  azureSubscription: 'Azure - fluentsite storage'
-                  storage: fluentsite
-                  ContainerName: $web
-                  BlobPrefix: $(deployBasePath)
-                  Gzip: true
+                  azureSubscription: 'Azure - fluentsite storage - NEW'
+                  scriptType: 'bash'
+                  scriptLocation: 'inlineScript'
+                  inlineScript: |
+                    az storage blob upload-batch \
+                      --destination '$web' \
+                      --source packages/fluentui/docs/dist \
+                      --account-name fluentsite \
+                      --destination-path $(deployBasePath) \
+                      --auth-mode login \
+                      --overwrite
 
               - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
                 displayName: 📒 Generate Manifest Docsite

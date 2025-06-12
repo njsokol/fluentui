@@ -3,8 +3,9 @@ import { Badge, BadgeProps } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { mergeClasses } from '@griffel/react';
 import { propValues, useStyles } from './utils';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
+import { Steps, type StoryParameters } from 'storywright';
 
 const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({ appearance }) => {
   const styles = useStyles();
@@ -77,7 +78,8 @@ const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appe
 
 export default {
   title: 'Badge Converged',
-} as ComponentMeta<typeof Badge>;
+  parameters: { storyWright: { steps: new Steps().snapshot('normal').end() } } satisfies StoryParameters,
+} satisfies Meta<typeof Badge>;
 
 export const Filled = () => <BadgeAppearanceTemplate appearance={'filled'} />;
 

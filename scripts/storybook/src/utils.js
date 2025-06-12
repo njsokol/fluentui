@@ -27,12 +27,18 @@ const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
  * @param {string} addonName - package name of custom workspace addon
  * @param {Object} options
  * @param {string=} options.workspaceRoot
+ * @param {string=} options.npmScope
  * @param {string} options.tsConfigPath - absolute path to tsConfig that contains path aliases
  * @param {AddonConfiguration=} options.options - addon preset configuration
  */
 function loadWorkspaceAddon(addonName, options) {
   /* eslint-disable no-shadow */
-  const { workspaceRoot, tsConfigPath, options: addonConfig } = { ...loadWorkspaceAddonDefaultOptions, ...options };
+  const {
+    workspaceRoot,
+    npmScope,
+    tsConfigPath,
+    options: addonConfig,
+  } = { ...loadWorkspaceAddonDefaultOptions, ...options };
 
   const inMemoryTsTranspilationTemplate = stripIndents`
       function registerInMemoryTsTranspilation(){
@@ -45,7 +51,7 @@ function loadWorkspaceAddon(addonName, options) {
     `;
 
   function getPaths() {
-    const addonMetadata = getProjectMetadata(addonName, workspaceRoot);
+    const addonMetadata = getProjectMetadata(normalizeProjectName(addonName, npmScope), workspaceRoot);
     const packageRootPath = path.join(workspaceRoot, addonMetadata.root);
     const packageSourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot ?? '');
     const packageJsonPath = path.join(packageRootPath, 'package.json');
@@ -216,8 +222,12 @@ function getImportMappingsForExportToSandboxAddon(allPackageInfo = getAllPackage
 function getPackageStoriesGlob(options) {
   const projects = getAllProjects();
 
-  const excludeStoriesInsertionFromPackages = options.excludeStoriesInsertionFromPackages ?? [];
-  const projectMetadata = getMetadata(options.packageName, projects);
+  const excludeStoriesInsertionFromPackages = (options.excludeStoriesInsertionFromPackages ?? []).map(packageName =>
+    normalizeProjectName(packageName),
+  );
+  const projectMetadata = /** @type {NonNullable<ReturnType<typeof getMetadata>>} */ (
+    getMetadata(normalizeProjectName(options.packageName), projects)
+  );
 
   /** @type {{name:string;version:string;dependencies?:Record<string,string>}} */
   const packageJson = JSON.parse(
@@ -228,18 +238,40 @@ function getPackageStoriesGlob(options) {
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
   const packages = Object.keys(dependencies);
 
-  const result = packages
-    .filter(pkgName => pkgName.startsWith('@fluentui/') && !excludeStoriesInsertionFromPackages.includes(pkgName))
-    .map(pkgName => {
-      const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
-      const pkgMetadata = getMetadata(pkgName, projects);
+  const result = packages.reduce((acc, pkgName) => {
+    const projectName = normalizeProjectName(pkgName);
 
-      if (fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'))) {
-        return `${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`;
-      }
+    if (!pkgName.startsWith('@fluentui/') || excludeStoriesInsertionFromPackages.includes(projectName)) {
+      return acc;
+    }
 
-      return `${rootOffset}${pkgMetadata.root}/src/${storiesGlob}`;
-    });
+    const pkgMetadata = getMetadata(projectName, projects, { throwIfNotFound: false });
+
+    if (!pkgMetadata) {
+      return acc;
+    }
+
+    const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
+
+    // if defined package(project) has stories sibling project, that means we need to look for stories in sibling project as the original project doesn't have stories anymore
+    // @see https://github.com/microsoft/fluentui/issues/30516
+    const pkgMetadataStories = projects.get(`${projectName}-stories`);
+    if (pkgMetadataStories) {
+      acc.push(`${rootOffset}${pkgMetadataStories.root}/src/${storiesGlob}`);
+      return acc;
+    }
+
+    const hasStoriesFolder = fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'));
+
+    if (hasStoriesFolder) {
+      acc.push(`${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`);
+      return acc;
+    }
+
+    acc.push(`${rootOffset}${pkgMetadata.root}/src/${storiesGlob}`);
+
+    return acc;
+  }, /** @type {string[]}*/ ([]));
 
   return result;
 
@@ -252,11 +284,20 @@ function getPackageStoriesGlob(options) {
     return getProjects(tree);
   }
 
-  function getMetadata(/** @type {string}*/ packageName, /** @type {ReturnType<typeof getAllProjects>}*/ allProjects) {
+  function getMetadata(
+    /** @type {string}*/ packageName,
+    /** @type {ReturnType<typeof getAllProjects>}*/ allProjects,
+    /** @type {Partial<{throwIfNotFound:boolean}>}*/ _options,
+  ) {
+    const { throwIfNotFound = true } = { ..._options };
     const metadata = allProjects.get(packageName);
 
     if (!metadata) {
-      throw new Error(`Project ${options.packageName} not found in workspace`);
+      if (throwIfNotFound) {
+        throw new Error(`Project "${packageName}" not found in workspace`);
+      }
+
+      return null;
     }
 
     return metadata;
@@ -338,7 +379,7 @@ function processBabelLoaderOptions(loaderConfig) {
  *
  * **Note:**
  * - this function mutates `rules` argument which is a reference to `modules.rules` webpack config property
- * - to print used babel-loader config run: `yarn start-storybook --no-manager-cache --debug-webpack` and look for
+ * - to print used babel-loader config run: `yarn start-storybook --debug-webpack` and look for
  * webpack rule set containing both:
  *  - `test: /\.(mjs|tsx?|jsx?)$/`
  *  - `node_modules/babel-loader/lib/index.js` as `loader` within module.rules
@@ -389,6 +430,10 @@ function overrideDefaultBabelLoader(options) {
 function getProjectMetadata(projectName, root = workspaceRoot) {
   const tree = new FsTree(root, false);
   return readProjectConfiguration(tree, projectName);
+}
+
+function normalizeProjectName(/** @type {string} */ value, npmScope = 'fluentui') {
+  return value.replace(`@${npmScope}/`, '');
 }
 
 exports.getPackageStoriesGlob = getPackageStoriesGlob;

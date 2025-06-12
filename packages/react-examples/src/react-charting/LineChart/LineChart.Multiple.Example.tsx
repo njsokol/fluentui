@@ -20,7 +20,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
 
   public render(): JSX.Element {
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="changeWidth_Multiple">Change Width:</label>
         <input
           type="range"
@@ -49,7 +49,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           checked={this.state.allowMultipleShapes}
         />
         <div>{this._styledExample()}</div>
-      </>
+      </div>
     );
   }
 
@@ -304,6 +304,7 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
           colorFillBars={colorFillBarData}
           allowMultipleShapesForPoints={this.state.allowMultipleShapes}
           enablePerfOptimization={true}
+          useUTC={false}
         />
       </div>
     );

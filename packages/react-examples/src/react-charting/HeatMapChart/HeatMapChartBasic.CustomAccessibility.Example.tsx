@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { HeatMapChart, IHeatMapChartDataPoint, IHeatMapChartProps } from '@fluentui/react-charting';
+import {
+  HeatMapChart,
+  IHeatMapChartDataPoint,
+  IHeatMapChartProps,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
+import { Label } from '@fluentui/react';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const yPoint: string[] = ['CHN', 'IND', 'USA', 'IDN', 'PAK'];
@@ -71,6 +78,25 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
       height: 350,
     };
   }
+
+  public componentDidMount(): void {
+    const style = document.createElement('style');
+    const focusStylingCSS = `
+    .containerDiv [contentEditable=true]:focus,
+    .containerDiv [tabindex]:focus,
+    .containerDiv area[href]:focus,
+    .containerDiv button:focus,
+    .containerDiv iframe:focus,
+    .containerDiv input:focus,
+    .containerDiv select:focus,
+    .containerDiv textarea:focus {
+      outline: -webkit-focus-ring-color auto 5px;
+    }
+    `;
+    style.appendChild(document.createTextNode(focusStylingCSS));
+    document.head.appendChild(style);
+  }
+
   public render(): React.ReactNode {
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     const HeatMapData: IHeatMapChartProps['data'] = [
@@ -91,7 +117,7 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
       },
     ];
     return (
-      <>
+      <div className="containerDiv">
         <label htmlFor="ChangeWidth_Custom">Change Width:</label>
         <input
           type="range"
@@ -112,7 +138,7 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
           onChange={this._onHeightChange}
           aria-valuetext={`ChangeHeightSlider${this.state.height}`}
         />
-        <p>Heat map showing population growth over decades</p>
+        <Label>Heat map showing population growth over decades</Label>
         <div style={rootStyle}>
           <HeatMapChart
             chartTitle="Heat map chart custom accessibility example"
@@ -122,11 +148,14 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
             width={this.state.width}
             height={this.state.height}
             domainValuesForColorScale={[0, 1500]}
-            rangeValuesForColorScale={['lightblue', 'darkblue']}
+            rangeValuesForColorScale={[
+              getColorFromToken(DataVizPalette.color6),
+              getColorFromToken(DataVizPalette.color10),
+            ]}
             enableReflow={true}
           />
         </div>
-      </>
+      </div>
     );
   }
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {

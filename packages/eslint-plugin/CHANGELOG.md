@@ -1,8 +1,96 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 12 Apr 2024 07:29:11 GMT and should not be manually modified.
+This log was last generated on Wed, 14 May 2025 13:28:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.20.0)
+
+Wed, 14 May 2025 13:28:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.19.0..@fluentui/eslint-plugin_v1.20.0)
+
+### Minor changes
+
+- feat: replace no-restricted-globals with type aware @nx/workspace-no-restricted-globals in v9 ([PR #32960](https://github.com/microsoft/fluentui/pull/32960) by martinhochel@microsoft.com)
+- feat: add browser compatibility plugin ([PR #33786](https://github.com/microsoft/fluentui/pull/33786) by dmytrokirpa@microsoft.com)
+- feat: enable @nx/workspace-no-missing-jsx-pragma rule for react v9 projects ([PR #32975](https://github.com/microsoft/fluentui/pull/32975) by martinhochel@microsoft.com)
+
+### Patches
+
+- fix: remove devDeps from deps ([PR #34157](https://github.com/microsoft/fluentui/pull/34157) by martinhochel@microsoft.com)
+- chore: bump minimal ts peer dep ([PR #32272](https://github.com/microsoft/fluentui/pull/32272) by vgenaev@gmail.com)
+- chore: remove npmScope from project name and update react config to accommodate project name change ([PR #31893](https://github.com/microsoft/fluentui/pull/31893) by martinhochel@microsoft.com)
+- chore: add Griffel's pseudo element lint rule ([PR #32236](https://github.com/microsoft/fluentui/pull/32236) by seanmonahan@microsoft.com)
+- chore: replace npm-scripts and just-scrtips with nx inferred tasks ([PR #33074](https://github.com/microsoft/fluentui/pull/33074) by martinhochel@microsoft.com)
+- updated eslint-plugin deprecation to v3 ([PR #32306](https://github.com/microsoft/fluentui/pull/32306) by vgenaev@gmail.com)
+- chore: remove usage of "export *" ([PR #33448](https://github.com/microsoft/fluentui/pull/33448) by olfedias@microsoft.com)
+- chore: migrate to @typescript/eslint v6 ([PR #31988](https://github.com/microsoft/fluentui/pull/31988) by vgenaev@gmail.com)
+- fix: bump minimal typescript version to 4.8.4 ([PR #32369](https://github.com/microsoft/fluentui/pull/32369) by vgenaev@gmail.com)
+- chore: removes type dependency on @fluentui/react-utilities internals in ban-instanceof-html-element ([PR #32072](https://github.com/microsoft/fluentui/pull/32072) by bernardo.sunderhus@gmail.com)
+- chore: migrate from deprecation plugin to ts-eslint/no-deprecated rule ([PR #33602](https://github.com/microsoft/fluentui/pull/33602) by vgenaev@gmail.com)
+
+## [1.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.19.0)
+
+Mon, 24 Jun 2024 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.2..@fluentui/eslint-plugin_v1.19.0)
+
+### Minor changes
+
+- feat: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+
+## [1.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.2)
+
+Thu, 06 Jun 2024 07:26:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.1..@fluentui/eslint-plugin_v1.18.2)
+
+### Patches
+
+- chore: migrate to typescript-eslint v5 and refactor experimental-tools to tools api usage ([PR #31517](https://github.com/microsoft/fluentui/pull/31517) by martinhochel@microsoft.com)
+
+## [1.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.1)
+
+Tue, 28 May 2024 07:28:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.0..@fluentui/eslint-plugin_v1.18.1)
+
+### Patches
+
+- chore: re-enable deprecation/deprecation for files with styles ([PR #31459](https://github.com/microsoft/fluentui/pull/31459) by olfedias@microsoft.com)
+
+## [1.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.0)
+
+Fri, 24 May 2024 07:28:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.9..@fluentui/eslint-plugin_v1.18.0)
+
+### Minor changes
+
+- feat: disallow direct access to globals ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+
+## [1.17.9](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.9)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.8..@fluentui/eslint-plugin_v1.17.9)
+
+### Patches
+
+- chore: bump @griffel/eslint-plugin ([PR #31447](https://github.com/microsoft/fluentui/pull/31447) by olfedias@microsoft.com)
+
+## [1.17.8](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.8)
+
+Mon, 20 May 2024 07:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.7..@fluentui/eslint-plugin_v1.17.8)
+
+### Patches
+
+- chore: bump @griffel/eslint-plugin ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+
+## [1.17.7](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.7)
+
+Wed, 24 Apr 2024 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.6..@fluentui/eslint-plugin_v1.17.7)
+
+### Patches
+
+- fix: dont apply import/no-extraneous-dependencies rule on stories ([PR #31087](https://github.com/microsoft/fluentui/pull/31087) by martinhochel@microsoft.com)
 
 ## [1.17.6](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.6)
 

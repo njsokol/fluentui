@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
 import { Steps } from 'storywright';
 
@@ -10,24 +10,24 @@ const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const contentId = 'content-id';
 const dismissButtonId = 'dismiss-button-id';
 const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
+  .snapshot('default')
   .hover(`#${contentId}`)
-  .snapshot('hover content', { cropTo: '.testWrapper' })
+  .snapshot('hover content')
   .mouseDown(`#${contentId}`)
-  .snapshot('pressed content', { cropTo: '.testWrapper' })
+  .snapshot('pressed content')
   .mouseUp(`#${contentId}`)
   .hover(`#${dismissButtonId}`)
-  .snapshot('hover dismiss', { cropTo: '.testWrapper' })
+  .snapshot('hover dismiss')
   .mouseDown(`#${dismissButtonId}`)
-  .snapshot('pressed dismiss', { cropTo: '.testWrapper' })
+  .snapshot('pressed dismiss')
   .mouseUp(`#${dismissButtonId}`)
   .end();
 
 export default {
   title: 'InteractionTag Converged',
-  Component: InteractionTag,
+  component: InteractionTag,
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof InteractionTag>;
+} satisfies Meta<typeof InteractionTag>;
 
 export const Filled = () => (
   <InteractionTag appearance="filled">

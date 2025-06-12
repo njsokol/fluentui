@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StoryWright } from 'storywright';
+import { Steps, type StoryParameters } from 'storywright';
 import { makeStyles } from '@griffel/react';
 import {
   Toolbar,
@@ -18,22 +18,30 @@ import {
   FontDecreaseRegular,
   TextFontRegular,
 } from '@fluentui/react-icons';
-import { ComponentMeta } from '@storybook/react';
-import { steps } from './utils';
+import type { Meta } from '@storybook/react';
 
 export default {
   title: 'Toolbar Converged',
-  Component: Toolbar,
+  component: Toolbar,
   decorators: [
     story => (
-      <StoryWright steps={steps}>
-        <div className="testWrapper" style={{ width: '600px' }}>
-          {story()}
-        </div>
-      </StoryWright>
+      <div className="testWrapper" style={{ width: '600px' }}>
+        {story()}
+      </div>
     ),
   ],
-} as ComponentMeta<typeof Toolbar>;
+  parameters: {
+    storyWright: {
+      steps: new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .click('#snooze-toggle')
+        .snapshot('Toggle On', { cropTo: '.testWrapper' })
+        .mouseDown('#bold-button')
+        .snapshot('Button Pressed', { cropTo: '.testWrapper' })
+        .end(),
+    },
+  } satisfies StoryParameters,
+} satisfies Meta<typeof Toolbar>;
 
 export const Default = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>
@@ -46,6 +54,28 @@ export const Default = (props: Partial<ToolbarProps>) => (
       aria-label="Snooze Alert Option"
       name="toggle"
       value="toggle"
+      icon={<AlertSnooze24Regular />}
+    />
+  </Toolbar>
+);
+
+export const Transparent = (props: Partial<ToolbarProps>) => (
+  <Toolbar {...props}>
+    <ToolbarButton
+      id="bold-button"
+      aria-label="Text option - Bold"
+      appearance="transparent"
+      icon={<TextBold24Regular />}
+    />
+    <ToolbarButton aria-label="Text option - Italic" appearance="transparent" icon={<TextItalic24Regular />} />
+    <ToolbarButton aria-label="Text option - Underline" appearance="transparent" icon={<TextUnderline24Regular />} />
+    <ToolbarDivider />
+    <ToolbarToggleButton
+      id="snooze-toggle"
+      aria-label="Snooze Alert Option"
+      name="toggle"
+      value="toggle"
+      appearance="transparent"
       icon={<AlertSnooze24Regular />}
     />
   </Toolbar>

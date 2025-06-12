@@ -36,8 +36,12 @@ const ComponentSet: React.FC = () => {
   );
 };
 
+export default {
+  title: 'Shadow DOM',
+};
+
 export const Default = () => (
-  <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+  <StoryWright steps={new Steps().snapshot('default').end()}>
     <ShadowRoot>
       <ComponentSet />
     </ShadowRoot>

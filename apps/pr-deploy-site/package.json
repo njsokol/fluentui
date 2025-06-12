@@ -7,8 +7,8 @@
   "scripts": {
     "clean": "just-scripts clean",
     "generate:site": "just-scripts generate:site",
-    "lint": "eslint --ext .js,.ts --cache .",
-    "type-check": "tsc -p ."
+    "lint": "eslint --cache .",
+    "type-check": "tsc -p . --noEmit"
   },
   "license": "MIT",
   "devDependencies": {

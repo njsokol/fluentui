@@ -1,17 +1,18 @@
 import * as React from 'react';
 import { CompoundButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
+import type { Meta } from '@storybook/react';
+import { getStoryVariant, RTL } from '../../utilities';
 import { buttonId, steps, useStyles } from './utils';
+import type { StoryParameters } from 'storywright';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export default {
   title: 'CompoundButton Converged',
   component: CompoundButton,
-  decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof CompoundButton>;
+  parameters: { storyWright: { steps } } satisfies StoryParameters,
+} satisfies Meta<typeof CompoundButton>;
 
 export const Outline = () => (
   <CompoundButton id={buttonId} secondaryContent="This is some secondary text" appearance="outline">

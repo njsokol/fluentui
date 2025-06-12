@@ -60,10 +60,11 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         height,
         width,
         verticalAlign: 'top',
+        'forced-color-adjust': 'none',
       },
       !circle && {
         selectors: {
-          [`.${IsFocusVisibleClassName} &:focus::after`]: {
+          [`.${IsFocusVisibleClassName} &:focus::after, :host(.${IsFocusVisibleClassName}) &:focus::after`]: {
             // -1px so that we don't increase visually the size of the cell.
             outlineOffset: `${calculatedBorderWidth - 1}px`,
           },
@@ -73,7 +74,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       circle && {
         borderRadius: '50%',
         selectors: {
-          [`.${IsFocusVisibleClassName} &:focus::after`]: {
+          [`.${IsFocusVisibleClassName} &:focus::after, :host(.${IsFocusVisibleClassName}) &:focus::after`]: {
             outline: 'none',
             borderColor: semanticColors.focusBorder,
             borderRadius: '50%',
@@ -134,6 +135,11 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
           // fake a border for white
           backgroundColor: buttonBorderIsWhite,
           padding: 1,
+          selectors: {
+            [HighContrastSelector]: {
+              outline: `1px solid ButtonText`,
+            },
+          },
         },
     ],
     // the <svg> that holds the color
